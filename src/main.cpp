@@ -16,6 +16,7 @@ int main() {
 
     GameState game_state{
         .activity_state = GameActivityState::MENU,
+        .pipePassed = false,
         .score = 0,
         .playerSpeed = GlobalVariables::defaultSpeed,
         .playerPosition = GlobalVariables::defaultPosition,

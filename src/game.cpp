@@ -34,6 +34,13 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
         GlobalVariables::pipes[0].height = randomHeight;
         GlobalVariables::pipes[1].y = randomHeight + GlobalVariables::pipeGap;
         GlobalVariables::pipes[1].height = Config::WindowHeight - GlobalVariables::pipes[1].y;
+        game_state.pipePassed = false;
+    }
+
+    // Check if player has passed a pipe
+    if (!game_state.pipePassed && GlobalVariables::pipes[0].x + GlobalVariables::pipeWidth < game_state.playerPosition.x) {
+        game_state.score++;
+        game_state.pipePassed = true; // Prevents multiple increments for the same pipe
     }
 
     // Collision detection
@@ -48,6 +55,8 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
             { Config::WindowWidth, 0, GlobalVariables::pipeWidth, 200 },
         GlobalVariables::pipes[1] =
             { Config::WindowWidth, 200 + GlobalVariables::pipeGap, GlobalVariables::pipeWidth, Config::WindowHeight - 200 - GlobalVariables::pipeGap };
+
+        game_state.score = 0;
     }
 }
 
@@ -56,6 +65,9 @@ void draw_playing(const GameState &game_state) {
 
     DrawRectangleRec(GlobalVariables::pipes[0], GREEN);
     DrawRectangleRec(GlobalVariables::pipes[1], GREEN);
+
+    // Draw score
+    DrawText(TextFormat("Score: %d", game_state.score), 10, 10, 20, WHITE);
 }
 
 void reset_game(GameState &game_state) {

@@ -10,11 +10,11 @@
 #include "raylib.h"
 
 struct GameState {
-    GameActivityState activity_state;
-
-    int score;
-    float playerSpeed;
-    Vector2 playerPosition;
+    GameActivityState activity_state;   // The current state of the game (playing, paused, etc.)
+    bool pipePassed;                    // If the player has passed a pipe
+    int score;                          // The current score of the player
+    float playerSpeed;                  // The speed of the player in pixels per second
+    Vector2 playerPosition;             // The position of the player in pixels
 };
 
 void update(GameState& game_state, AudioResourceManager& audioManager);
