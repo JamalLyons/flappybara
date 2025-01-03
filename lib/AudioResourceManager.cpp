@@ -9,6 +9,7 @@
 #include "../resources/audio/headers/spring_audio.h"
 #include "../resources/audio/headers/game_over_audio.h"
 #include "../resources/audio/headers/level_complete_audio.h"
+#include "../resources/audio/headers/score_audio.h"
 
 AudioResourceManager::AudioResourceManager() {
     InitAudioDevice();
@@ -45,9 +46,18 @@ void AudioResourceManager::loadAudioResources() {
         .data = LEVEL_COMPLETE_AUDIO_DATA
     };
 
+    constexpr Wave score_wave{
+        .frameCount = SCORE_AUDIO_FRAME_COUNT,
+        .sampleRate = SCORE_AUDIO_SAMPLE_RATE,
+        .sampleSize = SCORE_AUDIO_SAMPLE_SIZE,
+        .channels = SCORE_AUDIO_CHANNELS,
+        .data = SCORE_AUDIO_DATA
+    };
+
     audioResources["spring-effect"] = LoadSoundFromWave(spring_wave);
     audioResources["game-over"] = LoadSoundFromWave(game_over_wave);
     audioResources["level-complete"] = LoadSoundFromWave(level_complete_wave);
+    audioResources["score"] = LoadSoundFromWave(score_wave);
 }
 
 

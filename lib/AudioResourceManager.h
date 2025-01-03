@@ -51,6 +51,7 @@ private:
         {"spring-effect", "../resources/audio/spring.wav"},
         {"game-over", "../resources/audio/game_over.wav"},
         {"level-complete", "../resources/audio/level_complete.wav"},
+        {"score", "../resources/audio/score.wav"},
     };
 };
 

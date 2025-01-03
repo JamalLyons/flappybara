@@ -5,16 +5,61 @@
 #include "TextureResourceManager.h"
 #include <filesystem>
 
+#include "../resources/textures/headers/background_day_texture.h"
+#include "../resources/textures/headers/background_night_texture.h"
+#include "../resources/textures/headers/base_texture.h"
+#include "../resources/textures/headers/pipe_green_texture.h"
+#include "../resources/textures/headers/pipe_red_texture.h"
+
 TextureResourceManager::TextureResourceManager() {
     loadTextureResources();
 }
 
 TextureResourceManager::~TextureResourceManager() {
-    loadTextureResources();
+    unloadAllTextures();
 }
 
 void TextureResourceManager::loadTextureResources() {
-    // load the texture resources from headers
+    constexpr Image background_day_img = {
+        .data = BACKGROUND_DAY_TEXTURE_DATA,
+        .width = BACKGROUND_DAY_TEXTURE_WIDTH,
+        .height = BACKGROUND_DAY_TEXTURE_HEIGHT,
+        .format = BACKGROUND_DAY_TEXTURE_FORMAT,
+    };
+
+    constexpr Image background_night_img = {
+        .data = BACKGROUND_NIGHT_TEXTURE_DATA,
+        .width = BACKGROUND_NIGHT_TEXTURE_WIDTH,
+        .height = BACKGROUND_NIGHT_TEXTURE_HEIGHT,
+        .format = BACKGROUND_NIGHT_TEXTURE_FORMAT,
+    };
+
+    constexpr Image base_img = {
+        .data = BASE_TEXTURE_DATA,
+        .width = BASE_TEXTURE_WIDTH,
+        .height = BASE_TEXTURE_HEIGHT,
+        .format = BASE_TEXTURE_FORMAT,
+    };
+
+    constexpr Image pipe_green_img = {
+        .data = PIPE_GREEN_TEXTURE_DATA,
+        .width = PIPE_GREEN_TEXTURE_WIDTH,
+        .height = PIPE_GREEN_TEXTURE_HEIGHT,
+        .format = PIPE_GREEN_TEXTURE_FORMAT,
+    };
+
+    constexpr Image pipe_red_img = {
+        .data = PIPE_RED_TEXTURE_DATA,
+        .width = PIPE_RED_TEXTURE_WIDTH,
+        .height = PIPE_RED_TEXTURE_HEIGHT,
+        .format = PIPE_RED_TEXTURE_FORMAT,
+    };
+
+    loadTextureFromHeader("background-day", background_day_img);
+    loadTextureFromHeader("background-night", background_night_img);
+    loadTextureFromHeader("floor", base_img);
+    loadTextureFromHeader("pipe-green", pipe_green_img);
+    loadTextureFromHeader("pipe-red", pipe_red_img);
 }
 
 void TextureResourceManager::loadTextureFromHeader(const std::string &key, const Image &image) {
