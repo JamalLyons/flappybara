@@ -49,8 +49,8 @@ private:
     std::unordered_map<std::string, std::string> predefinedAudioPaths = {
         // Sound effects
         {"spring-effect", "../resources/audio/spring.wav"},
-        // Background music
-        // {"menu-background-music", "../resources/audio/background-music.wav"}
+        {"game-over", "../resources/audio/game_over.wav"},
+        {"level-complete", "../resources/audio/level_complete.wav"},
     };
 };
 

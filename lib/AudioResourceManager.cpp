@@ -7,6 +7,8 @@
 
 // Audio headers
 #include "../resources/audio/headers/spring_audio.h"
+#include "../resources/audio/headers/game_over_audio.h"
+#include "../resources/audio/headers/level_complete_audio.h"
 
 AudioResourceManager::AudioResourceManager() {
     InitAudioDevice();
@@ -19,7 +21,7 @@ AudioResourceManager::~AudioResourceManager() {
 }
 
 void AudioResourceManager::loadAudioResources() {
-    constexpr Wave wave{
+    constexpr Wave spring_wave{
         .frameCount = SPRING_AUDIO_FRAME_COUNT,
         .sampleRate = SPRING_AUDIO_SAMPLE_RATE,
         .sampleSize = SPRING_AUDIO_SAMPLE_SIZE,
@@ -27,7 +29,25 @@ void AudioResourceManager::loadAudioResources() {
         .data = SPRING_AUDIO_DATA
     };
 
-    audioResources["spring-effect"] = LoadSoundFromWave(wave);
+    constexpr Wave game_over_wave{
+        .frameCount = GAME_OVER_AUDIO_FRAME_COUNT,
+        .sampleRate = GAME_OVER_AUDIO_SAMPLE_RATE,
+        .sampleSize = GAME_OVER_AUDIO_SAMPLE_SIZE,
+        .channels = GAME_OVER_AUDIO_CHANNELS,
+        .data = GAME_OVER_AUDIO_DATA
+    };
+
+    constexpr Wave level_complete_wave{
+        .frameCount = LEVEL_COMPLETE_AUDIO_FRAME_COUNT,
+        .sampleRate = LEVEL_COMPLETE_AUDIO_SAMPLE_RATE,
+        .sampleSize = LEVEL_COMPLETE_AUDIO_SAMPLE_SIZE,
+        .channels = LEVEL_COMPLETE_AUDIO_CHANNELS,
+        .data = LEVEL_COMPLETE_AUDIO_DATA
+    };
+
+    audioResources["spring-effect"] = LoadSoundFromWave(spring_wave);
+    audioResources["game-over"] = LoadSoundFromWave(game_over_wave);
+    audioResources["level-complete"] = LoadSoundFromWave(level_complete_wave);
 }
 
 
