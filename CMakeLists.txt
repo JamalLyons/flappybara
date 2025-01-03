@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(Raylib_template)
+project(FlappyBara)
 
 set(CMAKE_CXX_STANDARD 26)
 
@@ -11,7 +11,7 @@ include_directories(${CMAKE_SOURCE_DIR}/includes)
 
 # Remove console for Release builds
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    add_executable(Raylib_template WIN32
+    add_executable(${PROJECT_NAME} WIN32
             src/main.cpp
             includes/main.h
             includes/constants.h
@@ -19,7 +19,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             lib/AudioResourceManager.h
     )
 else()
-    add_executable(Raylib_template
+    add_executable(${PROJECT_NAME}
             src/main.cpp
             includes/main.h
             includes/constants.h
