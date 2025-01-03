@@ -2,40 +2,35 @@
 // Created by codingwithjamal on 1/1/2025.
 //
 
+#include <iostream>
 #include "main.h"
 #include "raylib.h"
 #include "AudioResourceManager.h"
-
-#include "../resources/audio/headers/spring_audio.h"
+#include "game.h"
 
 int main() {
     InitWindow(Config::WindowWidth, Config::WindowHeight, Config::WindowTitle);
     SetTargetFPS(Config::FPS);
+    SetExitKey(0);
 
     AudioResourceManager audioManager;
     audioManager.buildAudioHeaders();
 
-    GameState game_state{ .activity_state = GameActivityState::MENU };
+    GameState game_state{
+        .activity_state = GameActivityState::MENU,
+        .score = 0,
+        .playerSpeed = GlobalVariables::defaultSpeed,
+        .playerPosition = GlobalVariables::defaultPosition,
+    };
 
     while (!WindowShouldClose()) {
         // Update game logic
-        update(game_state);
+        update(game_state, audioManager);
 
         // Draw the game
         BeginDrawing();
         ClearBackground(BLACK);
         draw(game_state);
-
-        if (IsKeyPressed(KEY_SPACE)) {
-            Wave wave{
-                .frameCount = SPRING_AUDIO_FRAME_COUNT,
-                .sampleRate = SPRING_AUDIO_SAMPLE_RATE,
-                .sampleSize = SPRING_AUDIO_SAMPLE_SIZE,
-                .channels = SPRING_AUDIO_CHANNELS,
-                .data = SPRING_AUDIO_DATA
-            };
-            audioManager.playRawAudio("spring-effect", wave);
-        }
 
         EndDrawing();
     }
@@ -46,40 +41,37 @@ int main() {
 }
 
 // Update game logic based on the current state
-void update(GameState& game_state) {
-    switch (game_state.activity_state) {
-        case GameActivityState::MENU:
-            if (IsKeyPressed(KEY_ENTER)) {
-                game_state.activity_state = GameActivityState::PLAYING;
-            }
-        break;
-        case GameActivityState::PLAYING:
-            if (IsKeyPressed(KEY_P)) {
-                game_state.activity_state = GameActivityState::PAUSED;
-            }
-        break;
-        case GameActivityState::PAUSED:
-            if (IsKeyPressed(KEY_R)) {
-                game_state.activity_state = GameActivityState::PLAYING;
-            }
-        break;
-        case GameActivityState::LOADING:
-            // Simulate loading or transition logic
-                game_state.activity_state = GameActivityState::MENU;
-        break;
-        case GameActivityState::SETTINGS:
-            if (IsKeyPressed(KEY_TAB)) {
-                game_state.activity_state = GameActivityState::MENU;
-            }
-        break;
-        case GameActivityState::GAME_OVER:
-            if (IsKeyPressed(KEY_ENTER)) {
-                game_state.activity_state = GameActivityState::MENU;
-            }
-        break;
-        default:
-            game_state.activity_state = GameActivityState::MENU;
-        break;
+void update(GameState& game_state, AudioResourceManager& audioManager) {
+    if (game_state.activity_state == GameActivityState::PLAYING) {
+        run_playing(game_state, audioManager);
+    }
+
+    if (game_state.activity_state == GameActivityState::GAME_OVER) {
+        reset_game(game_state);
+    }
+
+    if (game_state.activity_state == GameActivityState::MENU && IsKeyPressed(KEY_ENTER)) {
+        game_state.activity_state = GameActivityState::PLAYING;
+    }
+
+    if (game_state.activity_state == GameActivityState::PLAYING && IsKeyPressed(KEY_P)) {
+        game_state.activity_state = GameActivityState::PAUSED;
+    }
+
+    if (game_state.activity_state == GameActivityState::PAUSED && IsKeyPressed(KEY_R)) {
+        game_state.activity_state = GameActivityState::PLAYING;
+    }
+
+    if (IsKeyPressed(KEY_K)) {
+        game_state.activity_state = GameActivityState::SETTINGS;
+    }
+
+    if (game_state.activity_state == GameActivityState::SETTINGS && IsKeyPressed(KEY_ESCAPE)) {
+        game_state.activity_state = GameActivityState::PLAYING;
+    }
+
+    if (game_state.activity_state == GameActivityState::GAME_OVER && IsKeyPressed(KEY_ENTER)) {
+        game_state.activity_state = GameActivityState::MENU;
     }
 }
 
@@ -91,6 +83,7 @@ void draw(const GameState& game_state) {
             break;
         case GameActivityState::PLAYING:
             DrawText("Playing - Press P to Pause", Config::WindowWidth / 2 - 100, Config::WindowHeight / 2, 20, WHITE);
+            draw_playing(game_state);
             break;
         case GameActivityState::PAUSED:
             DrawText("Paused - Press R to Resume", Config::WindowWidth / 2 - 100, Config::WindowHeight / 2, 20, WHITE);

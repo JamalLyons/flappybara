@@ -17,6 +17,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             includes/constants.h
             lib/AudioResourceManager.cpp
             lib/AudioResourceManager.h
+            src/game.cpp
+            includes/game.h
     )
 else()
     add_executable(${PROJECT_NAME}
@@ -25,6 +27,8 @@ else()
             includes/constants.h
             lib/AudioResourceManager.cpp
             lib/AudioResourceManager.h
+            src/game.cpp
+            includes/game.h
     )
 endif()
 
