@@ -10,15 +10,7 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
 
     if (IsKeyPressed(KEY_SPACE)) {
         game_state.playerSpeed = GlobalVariables::jumpHeight;
-
-        constexpr Wave wave{
-            .frameCount = SPRING_AUDIO_FRAME_COUNT,
-            .sampleRate = SPRING_AUDIO_SAMPLE_RATE,
-            .sampleSize = SPRING_AUDIO_SAMPLE_SIZE,
-            .channels = SPRING_AUDIO_CHANNELS,
-            .data = SPRING_AUDIO_DATA
-        };
-        audioManager.playRawAudio("spring-effect", wave);
+        audioManager.playAudio("spring-effect");
     }
 
     if (game_state.playerPosition.y > Config::WindowHeight || game_state.playerPosition.y < 0 || game_state.playerPosition.x > Config::WindowWidth) {

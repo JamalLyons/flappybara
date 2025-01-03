@@ -7,6 +7,7 @@
 
 #include "AudioResourceManager.h"
 #include "constants.h"
+#include "raylib.h"
 
 struct GameState {
     GameActivityState activity_state;

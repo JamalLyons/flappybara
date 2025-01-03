@@ -4,8 +4,6 @@
 
 #include <iostream>
 #include "main.h"
-#include "raylib.h"
-#include "AudioResourceManager.h"
 #include "game.h"
 
 int main() {

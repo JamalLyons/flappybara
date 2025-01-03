@@ -5,12 +5,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "constants.h"
 #include "main.h"
-#include "raylib.h"
-#include "AudioResourceManager.h"
-
-#include "../resources/audio/headers/spring_audio.h"
 
 void run_playing(GameState &game_state, AudioResourceManager &audioManager);
 void draw_playing(const GameState &game_state);
