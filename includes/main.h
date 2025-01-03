@@ -5,9 +5,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "AudioResourceManager.h"
 #include "constants.h"
 #include "raylib.h"
+#include "AudioResourceManager.h"
+#include "TextureResourceManager.h"
 
 struct GameState {
     GameActivityState activity_state;   // The current state of the game (playing, paused, etc.)

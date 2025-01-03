@@ -11,6 +11,9 @@ int main() {
     SetTargetFPS(Config::FPS);
     SetExitKey(0);
 
+    TextureResourceManager textureManager;
+    textureManager.buildTextureHeaders();
+
     AudioResourceManager audioManager;
     audioManager.buildAudioHeaders();
 

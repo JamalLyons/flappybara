@@ -19,6 +19,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             lib/AudioResourceManager.h
             src/game.cpp
             includes/game.h
+            lib/TextureResourceManager.cpp
+            lib/TextureResourceManager.h
     )
 else()
     add_executable(${PROJECT_NAME}
@@ -29,6 +31,8 @@ else()
             lib/AudioResourceManager.h
             src/game.cpp
             includes/game.h
+            lib/TextureResourceManager.cpp
+            lib/TextureResourceManager.h
     )
 endif()
 

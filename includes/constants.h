@@ -16,6 +16,7 @@ namespace Config {
     // Enable audio file header building in development.
     // Remember to disable this in release builds.
     static constexpr bool buildAudioHeaders = false;
+    static constexpr bool buildTextureHeaders = false;
 }
 
 namespace GlobalVariables {
