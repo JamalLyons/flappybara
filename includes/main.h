@@ -19,6 +19,6 @@ struct GameState {
 };
 
 void update(GameState& game_state, AudioResourceManager& audioManager);
-void draw(const GameState& game_state);
+void draw(GameState& game_state, TextureResourceManager& textureManager);
 
 #endif //MAIN_H
