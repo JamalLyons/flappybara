@@ -18,7 +18,7 @@ struct GameState {
     Vector2 playerPosition;             // The position of the player in pixels
 };
 
-void update(GameState& game_state, AudioResourceManager& audioManager);
-void draw(GameState& game_state, TextureResourceManager& textureManager);
+void update(GameState &game_state, AudioResourceManager &audioManager);
+void draw(GameState &game_state, TextureResourceManager &textureManager);
 
 #endif //MAIN_H

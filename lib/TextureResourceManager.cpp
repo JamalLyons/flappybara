@@ -74,7 +74,7 @@ void TextureResourceManager::loadTextureFromHeader(const std::string &key, const
     }
 
     textureResources[key] = texture;
-    std::cout << "Loaded texture from header: " << key << std::endl;
+    std::cout << "Loaded texture '" << key << "' with ID: " << texture.id << std::endl;
 }
 
 Texture2D TextureResourceManager::getTexture(const std::string &key) const {

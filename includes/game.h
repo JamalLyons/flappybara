@@ -8,7 +8,7 @@
 #include "main.h"
 
 void run_playing(GameState &game_state, AudioResourceManager &audioManager);
-void draw_playing(const GameState &game_state, const TextureResourceManager &textureManager);
+void draw_playing(GameState &game_state);
 void reset_game(GameState &game_state);
 
 #endif //GAME_H

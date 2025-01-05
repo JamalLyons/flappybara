@@ -41,6 +41,7 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
     if (!game_state.pipePassed && GlobalVariables::pipes[0].x + GlobalVariables::pipeWidth < game_state.playerPosition.x) {
         game_state.score++;
         game_state.pipePassed = true; // Prevents multiple increments for the same pipe
+        audioManager.playAudio("score");
     }
 
     // Collision detection
@@ -48,19 +49,14 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
         CheckCollisionCircleRec(game_state.playerPosition, 20, GlobalVariables::pipes[1]) ||
         game_state.playerPosition.y > Config::WindowHeight ||
         game_state.playerPosition.y < 0) {
-            game_state.activity_state = GameActivityState::GAME_OVER;
 
-        // Reset pipes when game over
-        GlobalVariables::pipes[0] =
-            { Config::WindowWidth, 0, GlobalVariables::pipeWidth, 200 },
-        GlobalVariables::pipes[1] =
-            { Config::WindowWidth, 200 + GlobalVariables::pipeGap, GlobalVariables::pipeWidth, Config::WindowHeight - 200 - GlobalVariables::pipeGap };
-
+        audioManager.playAudio("game-over");
         game_state.score = 0;
+        game_state.activity_state = GameActivityState::GAME_OVER;
     }
 }
 
-void draw_playing(const GameState &game_state) {
+void draw_playing(GameState &game_state) {
     DrawCircleV(game_state.playerPosition, 20, BLUE);
 
     DrawRectangleRec(GlobalVariables::pipes[0], GREEN);
@@ -73,4 +69,10 @@ void draw_playing(const GameState &game_state) {
 void reset_game(GameState &game_state) {
     game_state.playerSpeed = GlobalVariables::defaultSpeed;
     game_state.playerPosition = GlobalVariables::defaultPosition;
+
+    // Reset pipes when game over
+    GlobalVariables::pipes[0] =
+        { Config::WindowWidth, 0, GlobalVariables::pipeWidth, 200 },
+    GlobalVariables::pipes[1] =
+        { Config::WindowWidth, 200 + GlobalVariables::pipeGap, GlobalVariables::pipeWidth, Config::WindowHeight - 200 - GlobalVariables::pipeGap };
 }
