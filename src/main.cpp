@@ -29,7 +29,6 @@ int main() {
     std::cout << "Default Position: " << GlobalVariables::defaultPosition.x << ", " << GlobalVariables::defaultPosition.y << std::endl;
     std::cout << "Window Width: " << Config::WindowWidth << ", Window Height: " << Config::WindowHeight << std::endl;
 
-
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);

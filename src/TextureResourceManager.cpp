@@ -4,6 +4,8 @@
 
 #include <filesystem>
 #include "TextureResourceManager.h"
+#include <iostream>
+
 #include "constants.h"
 
 #include "../resources/textures/headers/background_day_texture.h"
@@ -102,6 +104,22 @@ void TextureResourceManager::unloadAllTextures() {
     textureResources.clear();
     std::cout << "Unloaded all textures." << std::endl;
 }
+
+void TextureResourceManager::addTexture(const std::string &key, const std::string &path) {
+    if (textureResources.contains(key)) {
+        std::cerr << "Warning: Texture key '" << key << "' already exists. Skipping load." << std::endl;
+        return;
+    }
+
+    const Texture2D texture = LoadTexture(path.c_str());
+    if (texture.id == 0) {
+        throw std::runtime_error("Error: Failed to load texture from path: " + path);
+    }
+
+    textureResources[key] = texture;
+    std::cout << "Loaded texture '" << key << "' with ID: " << texture.id << std::endl;
+}
+
 
 void TextureResourceManager::buildTextureHeaders() {
 

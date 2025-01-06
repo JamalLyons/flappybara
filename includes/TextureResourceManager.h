@@ -15,6 +15,7 @@ public:
 
     void loadTextureFromHeader(const std::string &key, const Image &image);
     void loadTextureResources();
+    void addTexture(const std::string &key, const std::string &path);
     Texture2D getTexture(const std::string &key) const;
     void unloadTexture(const std::string &key);
     void unloadAllTextures();
