@@ -4,7 +4,7 @@
 
 #include "game.h"
 #include <cstdlib> // For rand() and srand()
-#include <ctime>   // For seeding random
+#include <random> // For std::mt19937 and std::uniform_int_distribution
 
 void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
     game_state.playerSpeed += GlobalVariables::gravity * GetFrameTime();
@@ -20,7 +20,10 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
     }
 
     // Seed random for pipe gap positions
-    srand(static_cast<unsigned>(time(nullptr)));
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution dist(0, RAND_MAX);
+    srand(dist(mt));
 
     // Move pipes
     GlobalVariables::pipes[0].x -= GlobalVariables::pipeSpeed  * GetFrameTime();
@@ -30,7 +33,7 @@ void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
     if (GlobalVariables::pipes[0].x + GlobalVariables::pipeWidth < 0) {
         GlobalVariables::pipes[0].x = Config::WindowWidth;
         GlobalVariables::pipes[1].x = Config::WindowWidth;
-        const float randomHeight = GetRandomValue(50, Config::WindowHeight - GlobalVariables::pipeGap - 50);
+        const auto randomHeight = static_cast<float>(GetRandomValue(50, Config::WindowHeight - GlobalVariables::pipeGap - 50));
         GlobalVariables::pipes[0].height = randomHeight;
         GlobalVariables::pipes[1].y = randomHeight + GlobalVariables::pipeGap;
         GlobalVariables::pipes[1].height = Config::WindowHeight - GlobalVariables::pipes[1].y;
