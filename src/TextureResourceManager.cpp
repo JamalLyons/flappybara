@@ -2,8 +2,9 @@
 // Created by codingwithjamal on 1/3/2025.
 //
 
-#include "../includes/TextureResourceManager.h"
 #include <filesystem>
+#include "TextureResourceManager.h"
+#include "constants.h"
 
 #include "../resources/textures/headers/background_day_texture.h"
 #include "../resources/textures/headers/background_night_texture.h"

@@ -1,9 +1,13 @@
-#include "../includes/AudioResourceManager.h"
-#include <stdexcept>
+//
+// Created by codingwithjamal on 1/3/2025.
+//
+
+
 #include <iostream>
 #include <filesystem>
 
-#include "../includes/constants.h"
+#include "AudioResourceManager.h"
+#include "constants.h"
 
 // Audio headers
 #include "../resources/audio/headers/spring_audio.h"
