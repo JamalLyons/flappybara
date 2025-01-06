@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 26)
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-include_directories(${CMAKE_SOURCE_DIR}/lib)
+# Make sure Cmake knows where to look for includes in our project
 include_directories(${CMAKE_SOURCE_DIR}/includes)
 
 # Remove console for Release builds
@@ -15,11 +15,11 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             src/main.cpp
             includes/main.h
             includes/constants.h
-            lib/AudioResourceManager.cpp
+            src/AudioResourceManager.cpp
             includes/AudioResourceManager.h
             src/game.cpp
             includes/game.h
-            lib/TextureResourceManager.cpp
+            src/TextureResourceManager.cpp
             includes/TextureResourceManager.h
     )
 else()
@@ -27,11 +27,11 @@ else()
             src/main.cpp
             includes/main.h
             includes/constants.h
-            lib/AudioResourceManager.cpp
+            src/AudioResourceManager.cpp
             includes/AudioResourceManager.h
             src/game.cpp
             includes/game.h
-            lib/TextureResourceManager.cpp
+            src/TextureResourceManager.cpp
             includes/TextureResourceManager.h
     )
 endif()
