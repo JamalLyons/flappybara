@@ -18,27 +18,6 @@ namespace Config {
 }
 
 namespace GlobalVariables {
-    static constexpr float gravity = 400.0f;      // pixels per second ^ 2
-    static constexpr float jumpHeight = -250.0f;
-
     static constexpr float defaultSpeed = 0.0f;
     static constexpr Vector2 defaultPosition = { Config::WindowHeight / 4.0f, Config::WindowHeight / 2.0f };
-
-    static constexpr int pipeWidth = 80;
-    static constexpr int pipeGap = 150;
-    static constexpr int pipeSpeed = 200;
-
-    static Rectangle pipes[2] = {
-        { Config::WindowWidth, 0, pipeWidth, 200 },                                                 // Top pipe
-        { Config::WindowWidth, 200 + pipeGap, pipeWidth, Config::WindowHeight - 200 - pipeGap }     // Bottom pipe
-    };
 }
-
-enum class GameActivityState {
-    MENU,
-    PLAYING,
-    PAUSED,
-    LOADING,
-    SETTINGS,
-    GAME_OVER
-};

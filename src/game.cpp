@@ -3,79 +3,96 @@
 //
 
 #include "game.h"
-#include <cstdlib> // For rand() and srand()
-#include <random> // For std::mt19937 and std::uniform_int_distribution
+#include <random>
 
-void run_playing(GameState &game_state, AudioResourceManager &audioManager) {
-    game_state.playerSpeed += GlobalVariables::gravity * GetFrameTime();
-    game_state.playerPosition.y += game_state.playerSpeed * GetFrameTime();
+Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager)
+    : game_state(game_state), audioManager(audioManager), textureManager(textureManager) {}
+
+Game::~Game() = default;
+
+void Game::update() {
+    this->game_state.playerSpeed += this->m_gravity * GetFrameTime();
+    this->game_state.playerPosition.y += this->game_state.playerSpeed * GetFrameTime();
 
     if (IsKeyPressed(KEY_SPACE)) {
-        game_state.playerSpeed = GlobalVariables::jumpHeight;
-        audioManager.playAudio("spring-effect");
+        this->game_state.playerSpeed = m_jumpHeight;
+        this->audioManager.playAudio("spring-effect");
     }
 
-    if (game_state.playerPosition.y > Config::WindowHeight || game_state.playerPosition.y < 0 || game_state.playerPosition.x > Config::WindowWidth) {
-        game_state.activity_state = GameActivityState::GAME_OVER;
+    if (this->game_state.playerPosition.y > Config::WindowHeight || this->game_state.playerPosition.y < 0 || this->game_state.playerPosition.x > Config::WindowWidth) {
+        this->game_state.activity_state = GameActivityState::GAME_OVER;
+        this->audioManager.playAudio("game-over");
+        return;
     }
-
-    // Seed random for pipe gap positions
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_int_distribution dist(0, RAND_MAX);
-    srand(dist(mt));
 
     // Move pipes
-    GlobalVariables::pipes[0].x -= GlobalVariables::pipeSpeed  * GetFrameTime();
-    GlobalVariables::pipes[1].x -= GlobalVariables::pipeSpeed  * GetFrameTime();
+    this->m_pipes[0].x -= this->m_pipeSpeed  * GetFrameTime();
+    this->m_pipes[1].x -= this->m_pipeSpeed  * GetFrameTime();
 
     // Reset pipes when off-screen
-    if (GlobalVariables::pipes[0].x + GlobalVariables::pipeWidth < 0) {
-        GlobalVariables::pipes[0].x = Config::WindowWidth;
-        GlobalVariables::pipes[1].x = Config::WindowWidth;
-        const auto randomHeight = static_cast<float>(GetRandomValue(50, Config::WindowHeight - GlobalVariables::pipeGap - 50));
-        GlobalVariables::pipes[0].height = randomHeight;
-        GlobalVariables::pipes[1].y = randomHeight + GlobalVariables::pipeGap;
-        GlobalVariables::pipes[1].height = Config::WindowHeight - GlobalVariables::pipes[1].y;
-        game_state.pipePassed = false;
+    if (m_pipes[0].x + this->m_pipeWidth < 0) {
+        // Seed random for pipe gap positions
+        std::random_device rd;
+        std::mt19937 mt(rd());
+        std::uniform_real_distribution dist(50.0f, Config::WindowHeight - this->m_pipeGap - 50.0f);
+        const auto randomHeight = dist(mt);
+
+        this->m_pipes[0].x = Config::WindowWidth;
+        this->m_pipes[1].x = Config::WindowWidth;
+        this->m_pipes[0].height = randomHeight;
+        this->m_pipes[1].y = randomHeight + this->m_pipeGap;
+        this->m_pipes[1].height = Config::WindowHeight - this->m_pipes[1].y;
+        this->game_state.pipePassed = false;
     }
 
     // Check if player has passed a pipe
-    if (!game_state.pipePassed && GlobalVariables::pipes[0].x + GlobalVariables::pipeWidth < game_state.playerPosition.x) {
-        game_state.score++;
-        game_state.pipePassed = true; // Prevents multiple increments for the same pipe
-        audioManager.playAudio("score");
+    if (!this->game_state.pipePassed && this->m_pipes[0].x + this->m_pipeWidth < this->game_state.playerPosition.x) {
+        this->game_state.score++;
+        this->game_state.pipePassed = true; // Prevents multiple increments for the same pipe
+        this->audioManager.playAudio("score");
     }
 
     // Collision detection
-    if (CheckCollisionCircleRec(game_state.playerPosition, 20, GlobalVariables::pipes[0]) ||
-        CheckCollisionCircleRec(game_state.playerPosition, 20, GlobalVariables::pipes[1]) ||
-        game_state.playerPosition.y > Config::WindowHeight ||
-        game_state.playerPosition.y < 0) {
+    if (CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[0]) ||
+        CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[1]) ||
+        this->game_state.playerPosition.y > Config::WindowHeight ||
+        this->game_state.playerPosition.y < 0) {
 
-        audioManager.playAudio("game-over");
-        game_state.score = 0;
-        game_state.activity_state = GameActivityState::GAME_OVER;
+        this->audioManager.playAudio("game-over");
+        this->game_state.score = 0;
+        this->game_state.activity_state = GameActivityState::GAME_OVER;
     }
 }
 
-void draw_playing(GameState &game_state) {
-    DrawCircleV(game_state.playerPosition, 20, BLUE);
-
-    DrawRectangleRec(GlobalVariables::pipes[0], GREEN);
-    DrawRectangleRec(GlobalVariables::pipes[1], GREEN);
-
-    // Draw score
-    DrawText(TextFormat("Score: %d", game_state.score), 10, 10, 20, WHITE);
-}
-
-void reset_game(GameState &game_state) {
-    game_state.playerSpeed = GlobalVariables::defaultSpeed;
-    game_state.playerPosition = GlobalVariables::defaultPosition;
+void Game::reset_game() {
+    this->game_state.playerSpeed = GlobalVariables::defaultSpeed;
+    this->game_state.playerPosition = GlobalVariables::defaultPosition;
 
     // Reset pipes when game over
-    GlobalVariables::pipes[0] =
-        { Config::WindowWidth, 0, GlobalVariables::pipeWidth, 200 },
-    GlobalVariables::pipes[1] =
-        { Config::WindowWidth, 200 + GlobalVariables::pipeGap, GlobalVariables::pipeWidth, Config::WindowHeight - 200 - GlobalVariables::pipeGap };
+    this->m_pipes[0] = { Config::WindowWidth, 0, m_pipeWidth, 200 };
+    this->m_pipes[1] =
+        { Config::WindowWidth, 200 + m_pipeGap, m_pipeWidth, Config::WindowHeight - 200 - m_pipeGap };
+}
+
+void Game::draw() {
+    DrawText(TextFormat("Player Y: %.2f", this->game_state.playerPosition.y), 10, 30, 20, WHITE);
+    DrawText(TextFormat("Player Speed: %.2f", this->game_state.playerSpeed), 10, 50, 20, WHITE);
+    DrawText(TextFormat("Pipe 1 X: %.2f, Height: %.2f", m_pipes[0].x, m_pipes[0].height), 10, 70, 20, WHITE);
+    DrawText(TextFormat("Pipe 2 X: %.2f, Y: %.2f, Height: %.2f", m_pipes[1].x, m_pipes[1].y, m_pipes[1].height), 10, 90, 20, WHITE);
+
+    DrawCircleV(this->game_state.playerPosition, 20, BLUE);
+
+    DrawRectangleRec(m_pipes[0], GREEN);
+    DrawRectangleRec(m_pipes[1], GREEN);
+
+    // Draw score
+    DrawText(TextFormat("Score: %d", this->game_state.score), 10, 10, 20, WHITE);
+}
+
+void Game::draw_menu() {
+    DrawText("Start Menu - Press ENTER to Play", Config::WindowWidth / 2 - 200, Config::WindowHeight / 2, 20, WHITE);
+}
+
+void Game::draw_game_over() {
+    DrawText("Game Over - Press ENTER to Restart", Config::WindowWidth / 2 - 150, Config::WindowHeight / 2, 20, WHITE);
 }

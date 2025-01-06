@@ -4,8 +4,55 @@
 
 #pragma once
 
-#include "main.h"
+#include "AudioResourceManager.h"
+#include "TextureResourceManager.h"
 
-void run_playing(GameState &game_state, AudioResourceManager &audioManager);
-void draw_playing(GameState &game_state);
-void reset_game(GameState &game_state);
+enum class GameActivityState {
+    MENU,
+    PLAYING,
+    PAUSED,
+    LOADING,
+    SETTINGS,
+    GAME_OVER
+};
+
+struct GameState {
+    GameActivityState activity_state;   // The current state of the game (playing, paused, etc.)
+    bool pipePassed;                    // If the player has passed a pipe
+    int score;                          // The current score of the player
+    float playerSpeed;                  // The speed of the player in pixels per second
+    Vector2 playerPosition;             // The position of the player in pixels
+};
+
+class Game {
+public:
+    Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager);
+    ~Game();
+
+    void update();
+
+    void draw();
+
+    void draw_menu();
+
+    void draw_game_over();
+
+    void reset_game();
+
+private:
+    GameState &game_state;
+    AudioResourceManager &audioManager;
+    TextureResourceManager &textureManager;
+
+    Rectangle m_pipes[2] = {
+        { Config::WindowWidth, 0, m_pipeWidth, 200 },
+        { Config::WindowWidth, 200 + m_pipeGap, m_pipeWidth, Config::WindowHeight - 200 - m_pipeGap },
+    };
+
+    float m_pipeWidth = 80.0f;
+    float m_pipeGap = 150.f;
+    float m_pipeSpeed = 200.f;
+
+    const float m_gravity = 400.0f;      // pixels per second ^ 2
+    const float m_jumpHeight = -250.0f;
+};
