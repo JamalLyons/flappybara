@@ -11,14 +11,17 @@ Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureRes
 Game::~Game() = default;
 
 void Game::update() {
+    // Apply gravity to player
     this->game_state.playerSpeed += this->m_gravity * GetFrameTime();
     this->game_state.playerPosition.y += this->game_state.playerSpeed * GetFrameTime();
 
+    // Jump if space is pressed
     if (IsKeyPressed(KEY_SPACE)) {
         this->game_state.playerSpeed = m_jumpHeight;
         this->audioManager.playAudio("spring-effect");
     }
 
+    // Check if player has hit world boundaries
     if (this->game_state.playerPosition.y > Config::WindowHeight || this->game_state.playerPosition.y < 0 || this->game_state.playerPosition.x > Config::WindowWidth) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
@@ -67,6 +70,8 @@ void Game::update() {
 void Game::reset_game() {
     this->game_state.playerSpeed = GlobalVariables::defaultSpeed;
     this->game_state.playerPosition = GlobalVariables::defaultPosition;
+    this->game_state.pipePassed = false;
+    this->game_state.score = 0;
 
     // Reset pipes when game over
     this->m_pipes[0] = { Config::WindowWidth, 0, m_pipeWidth, 200 };

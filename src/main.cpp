@@ -39,6 +39,7 @@ int main() {
                 game.draw_menu();
                 if (IsKeyPressed(KEY_ENTER)) {
                     game_state.activity_state = GameActivityState::PLAYING;
+                    game.reset_game(); // Ensure game state is initialized when starting
                 }
             break;
 
