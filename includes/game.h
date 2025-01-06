@@ -6,6 +6,7 @@
 
 #include "AudioResourceManager.h"
 #include "TextureResourceManager.h"
+#include "constants.h"
 
 enum class GameActivityState {
     MENU,
