@@ -10,7 +10,7 @@ int main() {
     // SetExitKey(0);
 
     TextureResourceManager textureManager;
-    textureManager.buildTextureHeaders();
+    // textureManager.buildTextureHeaders();
 
     AudioResourceManager audioManager;
     audioManager.buildAudioHeaders();
@@ -31,7 +31,7 @@ int main() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(BLACK);
+        ClearBackground(GetColor(0x052c46ff));
 
         switch (game_state.activity_state) {
             case GameActivityState::MENU:

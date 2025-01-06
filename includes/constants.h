@@ -8,13 +8,15 @@
 namespace Config {
     static constexpr int FPS = 60;
     static constexpr int WindowWidth = 800;
-    static constexpr int WindowHeight = 450;
+    static constexpr int WindowHeight = 600;
     static constexpr auto WindowTitle = "FlappyBara";
 
     // Enable audio file header building in development.
     // Remember to disable this in release builds.
     static constexpr bool buildAudioHeaders = false;
     static constexpr bool buildTextureHeaders = false;
+
+    static constexpr bool disableAudio = false;
 }
 
 namespace GlobalVariables {

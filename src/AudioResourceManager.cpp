@@ -66,6 +66,11 @@ void AudioResourceManager::loadAudioResources() {
 
 
 void AudioResourceManager::playAudio(const std::string &key) {
+    if (Config::disableAudio) {
+        std::cout << "Audio disabled in config." << std::endl;
+        return;
+    }
+
     if (audioResources.contains(key)) {
         if (const Sound &sound = audioResources[key]; sound.stream.buffer != nullptr) {
             std::cout << "Playing audio: " << key << std::endl;

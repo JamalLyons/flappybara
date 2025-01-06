@@ -80,17 +80,15 @@ void Game::reset_game() {
 }
 
 void Game::draw() {
+    DrawRectangleRec(m_pipes[0], GREEN);
+    DrawRectangleRec(m_pipes[1], GREEN);
+
+    DrawCircleV(this->game_state.playerPosition, 20, BLUE);
+
     DrawText(TextFormat("Player Y: %.2f", this->game_state.playerPosition.y), 10, 30, 20, WHITE);
     DrawText(TextFormat("Player Speed: %.2f", this->game_state.playerSpeed), 10, 50, 20, WHITE);
     DrawText(TextFormat("Pipe 1 X: %.2f, Height: %.2f", m_pipes[0].x, m_pipes[0].height), 10, 70, 20, WHITE);
     DrawText(TextFormat("Pipe 2 X: %.2f, Y: %.2f, Height: %.2f", m_pipes[1].x, m_pipes[1].y, m_pipes[1].height), 10, 90, 20, WHITE);
-
-    DrawCircleV(this->game_state.playerPosition, 20, BLUE);
-
-    DrawRectangleRec(m_pipes[0], GREEN);
-    DrawRectangleRec(m_pipes[1], GREEN);
-
-    // Draw score
     DrawText(TextFormat("Score: %d", this->game_state.score), 10, 10, 20, WHITE);
 }
 
