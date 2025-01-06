@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "raylib.h"
+#include "../cmake-build-debug/_deps/raylib-src/src/raylib.h"
 #include <string>
 #include <unordered_map>
 #include <iostream>

@@ -16,11 +16,11 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             includes/main.h
             includes/constants.h
             lib/AudioResourceManager.cpp
-            lib/AudioResourceManager.h
+            includes/AudioResourceManager.h
             src/game.cpp
             includes/game.h
             lib/TextureResourceManager.cpp
-            lib/TextureResourceManager.h
+            includes/TextureResourceManager.h
     )
 else()
     add_executable(${PROJECT_NAME}
@@ -28,11 +28,11 @@ else()
             includes/main.h
             includes/constants.h
             lib/AudioResourceManager.cpp
-            lib/AudioResourceManager.h
+            includes/AudioResourceManager.h
             src/game.cpp
             includes/game.h
             lib/TextureResourceManager.cpp
-            lib/TextureResourceManager.h
+            includes/TextureResourceManager.h
     )
 endif()
 

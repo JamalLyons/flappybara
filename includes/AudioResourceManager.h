@@ -6,7 +6,7 @@
 
 #include <string>
 #include <unordered_map>
-#include "raylib.h"
+#include "../cmake-build-debug/_deps/raylib-src/src/raylib.h"
 
 class AudioResourceManager {
 public:
