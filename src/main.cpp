@@ -9,7 +9,7 @@
 int main() {
     InitWindow(Config::WindowWidth, Config::WindowHeight, Config::WindowTitle);
     SetTargetFPS(Config::FPS);
-    SetExitKey(0);
+    // SetExitKey(0);
 
     TextureResourceManager textureManager;
     textureManager.buildTextureHeaders();
