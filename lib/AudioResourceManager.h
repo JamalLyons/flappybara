@@ -2,8 +2,7 @@
 // Created by codingwithjamal on 1/2/2025.
 //
 
-#ifndef AUDIORESOURCEMANAGER_H
-#define AUDIORESOURCEMANAGER_H
+#pragma once
 
 #include <string>
 #include <unordered_map>
@@ -54,5 +53,3 @@ private:
         {"score", "../resources/audio/score.wav"},
     };
 };
-
-#endif //AUDIORESOURCEMANAGER_H

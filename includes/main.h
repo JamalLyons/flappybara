@@ -2,8 +2,7 @@
 // Created by codingwithjamal on 1/1/2025.
 //
 
-#ifndef MAIN_H
-#define MAIN_H
+#pragma once
 
 #include "constants.h"
 #include "raylib.h"
@@ -20,5 +19,3 @@ struct GameState {
 
 void update(GameState &game_state, AudioResourceManager &audioManager);
 void draw(GameState &game_state, TextureResourceManager &textureManager);
-
-#endif //MAIN_H

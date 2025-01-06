@@ -2,8 +2,7 @@
 // Created by codingwithjamal on 1/3/2025.
 //
 
-#ifndef TEXTURERESOURCEMANAGER_H
-#define TEXTURERESOURCEMANAGER_H
+#pragma once
 
 #include "raylib.h"
 #include <string>
@@ -33,5 +32,3 @@ private:
             {"pipe-red", "../resources/textures/pipe_red.png"},
     };
 };
-
-#endif //TEXTURERESOURCEMANAGER_H

@@ -1,9 +1,7 @@
 //
 // Created by codingwithjamal on 1/2/2025.
 //
-
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#pragma once
 
 #include "raylib.h"
 
@@ -44,6 +42,3 @@ enum class GameActivityState {
     SETTINGS,
     GAME_OVER
 };
-
-
-#endif //CONSTANTS_H
