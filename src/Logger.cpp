@@ -47,14 +47,14 @@ void Logger::log(LogLevel level, const std::string& message) {
     const std::string levelStr = logLevelToString(level);
     const std::string logEntry = "[" + timestamp + "] [" + levelStr + "] " + message;
 
-    // Write to log file
-    if (logFile.is_open()) {
-        logFile << logEntry << std::endl;
-    }
-
     // Optionally write to console
     if (consoleLoggingEnabled) {
         std::cout << logEntry << std::endl;
+    }
+
+    // Write to log file
+    if (logFile.is_open()) {
+        logFile << logEntry << std::endl;
     }
 }
 

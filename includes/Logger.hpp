@@ -30,7 +30,7 @@ public:
     // Logging function
     void log(LogLevel level, const std::string& message);
 
-    // Set log file name (default is "log.txt")
+    // Set log file name (default is "game.log")
     void setLogFile(const std::string& filename);
 
 private:

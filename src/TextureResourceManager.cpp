@@ -24,6 +24,9 @@ TextureResourceManager::~TextureResourceManager() {
 }
 
 void TextureResourceManager::loadTextureResources() {
+    Logger& logger = Logger::getInstance();
+    logger.log(LogLevel::INFO, "Loading texture resources.");
+
     constexpr Image background_day_img = {
         .data = BACKGROUND_DAY_TEXTURE_DATA,
         .width = BACKGROUND_DAY_TEXTURE_WIDTH,
@@ -78,82 +81,99 @@ void TextureResourceManager::loadTextureResources() {
     loadTextureFromHeader("pipe-green", pipe_green_img);
     // loadTextureFromHeader("pipe-red", pipe_red_img);
     loadTextureFromHeader("player", player_img);
+
+    logger.log(LogLevel::INFO, "Texture resources loaded successfully.");
 }
 
 void TextureResourceManager::loadTextureFromHeader(const std::string &key, const Image &image) {
+    Logger& logger = Logger::getInstance();
+
     if (textureResources.contains(key)) {
-        std::cerr << "Warning: Texture key '" << key << "' already exists. Skipping load." << std::endl;
+        logger.log(LogLevel::WARNING, "Texture key '" + key + "' already exists. Skipping load.");
         return;
     }
 
     const Texture2D texture = LoadTextureFromImage(image);
     if (texture.id == 0) {
+        logger.log(LogLevel::ERROR, "Error: Failed to load texture from header data for key: " + key);
         throw std::runtime_error("Error: Failed to load texture from header data for key: " + key);
     }
 
     textureResources[key] = texture;
-    std::cout << "Loaded texture '" << key << "' with ID: " << texture.id << std::endl;
+    logger.log(LogLevel::INFO, "Loaded texture '" + key + "' with ID: " + std::to_string(texture.id));
 }
 
 Texture2D TextureResourceManager::getTexture(const std::string &key) const {
+    Logger& logger = Logger::getInstance();
+
     if (!textureResources.contains(key)) {
+        logger.log(LogLevel::ERROR, "Error: Texture key '" + key + "' not found!");
         throw std::runtime_error("Error: Texture key '" + key + "' not found!");
     }
     return textureResources.at(key);
 }
 
 void TextureResourceManager::unloadTexture(const std::string &key) {
+    Logger& logger = Logger::getInstance();
     if (textureResources.contains(key)) {
         UnloadTexture(textureResources[key]);
         textureResources.erase(key);
-        std::cout << "Unloaded texture: " << key << std::endl;
+        logger.log(LogLevel::INFO, "Unloaded texture '" + key + "'.");
     } else {
         std::cerr << "Error: Texture key '" << key << "' not found!" << std::endl;
     }
 }
 
 void TextureResourceManager::unloadAllTextures() {
+    Logger& logger = Logger::getInstance();
+
     for (auto &[key, texture] : textureResources) {
         UnloadTexture(texture);
     }
     textureResources.clear();
-    std::cout << "Unloaded all textures." << std::endl;
+
+    logger.log(LogLevel::INFO, "Unloaded all textures.");
 }
 
 void TextureResourceManager::addTexture(const std::string &key, const std::string &path) {
+    Logger& logger = Logger::getInstance();
+
     if (textureResources.contains(key)) {
-        std::cerr << "Warning: Texture key '" << key << "' already exists. Skipping load." << std::endl;
+        logger.log(LogLevel::WARNING, "Texture key '" + key + "' already exists. Skipping load.");
         return;
     }
 
     const Texture2D texture = LoadTexture(path.c_str());
     if (texture.id == 0) {
+        logger.log(LogLevel::ERROR, "Error: Failed to load texture from path: " + path);
         throw std::runtime_error("Error: Failed to load texture from path: " + path);
     }
 
     textureResources[key] = texture;
-    std::cout << "Loaded texture '" << key << "' with ID: " << texture.id << std::endl;
+
+    logger.log(LogLevel::INFO, "Loaded texture '" + key + "' with ID: " + std::to_string(texture.id));
 }
 
 
 void TextureResourceManager::buildTextureHeaders() {
+    Logger& logger = Logger::getInstance();
 
     if constexpr (!Config::buildTextureHeaders) {
-        std::cout << "Texture headers building disabled." << std::endl;
+        logger.log(LogLevel::INFO, "Texture headers building disabled.");
         return;
     }
 
     const std::string outputDir = "../resources/textures/headers/";
     if (!std::filesystem::exists(outputDir)) {
         std::filesystem::create_directories(outputDir);
-        std::cout << "Created output directory: " << outputDir << std::endl;
+        logger.log(LogLevel::INFO, "Created missing output directory for texture headers: " + outputDir);
     }
 
     for (const auto &[key, path] : predefinedTextures) {
         // Load the image file
         const Image image = LoadImage(path.c_str());
         if (!image.data) {
-            std::cerr << "Error: Failed to load image data: " << path << std::endl;
+            logger.log(LogLevel::ERROR, "Error: Failed to load image data: " + path);
             continue;
         }
 
@@ -162,18 +182,18 @@ void TextureResourceManager::buildTextureHeaders() {
         const std::string sanitizedFilename = filename.substr(0, filename.find_last_of('.')) + "_texture.h";
         const std::string outputPath = outputDir + sanitizedFilename;
 
-        std::cout << "Building header: " << outputPath << std::endl;
+        logger.log(LogLevel::INFO, "Building header: " + outputPath);
 
         // Export the image as a C header
         if (!ExportImageAsCode(image, outputPath.c_str())) {
-            TraceLog(LOG_ERROR, "Failed to export image as C header file: %s", outputPath.c_str());
+            logger.log(LogLevel::ERROR, "Failed to export image as C header file: " + outputPath);
         } else {
-            TraceLog(LOG_INFO, "Image exported as C header file successfully: %s", outputPath.c_str());
+            logger.log(LogLevel::INFO, "Image exported as C header file successfully: " + outputPath);
         }
 
         // Unload the image to free memory
         UnloadImage(image);
     }
 
-    std::cout << "Finished building texture headers." << std::endl;
+    logger.log(LogLevel::INFO, "Texture headers building completed.");
 }

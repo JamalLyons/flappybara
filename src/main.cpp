@@ -23,9 +23,7 @@ int main() {
 
     Logger& logger = Logger::getInstance();
 
-    logger.log(LogLevel::DEBUG, "Default Speed: " + std::to_string(GlobalVariables::defaultSpeed));
-    logger.log(LogLevel::DEBUG, "Default Position: " + std::to_string(GlobalVariables::defaultPosition.x) + ", " + std::to_string(GlobalVariables::defaultPosition.y));
-    logger.log(LogLevel::DEBUG, "Window Width: " + std::to_string(Config::WindowWidth));
+    logger.log(LogLevel::INFO, "Starting game...");
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -62,6 +60,8 @@ int main() {
     }
 
     CloseWindow();
+
+    logger.log(LogLevel::INFO, "Game ended.");
 
     return 0;
 }

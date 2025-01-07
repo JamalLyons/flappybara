@@ -7,6 +7,7 @@
 #include <raylib.h>
 #include <string>
 #include <unordered_map>
+#include "Logger.hpp"
 
 class TextureResourceManager {
 public:

@@ -8,23 +8,33 @@
 Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager)
     : game_state(game_state), audioManager(audioManager), textureManager(textureManager) {
 
+    Logger& logger = Logger::getInstance();
+
     this->m_playerPosition = GlobalVariables::defaultPosition;
     this->m_playerSpeed = GlobalVariables::defaultSpeed;
     this->m_score = 0;
     this->m_pipePassed = false;
+
+    logger.log(LogLevel::INFO, "Game initialized with default player position and speed.");
 }
 
 Game::~Game() = default;
 
 void Game::update() {
+    Logger& logger = Logger::getInstance();
+
     // Apply gravity to player
     this->m_playerSpeed += this->m_gravity * GetFrameTime();
     this->m_playerPosition.y += this->m_playerSpeed * GetFrameTime();
+
+    // logger.log(LogLevel::DEBUG, "Player position updated: Y = " + std::to_string(this->m_playerPosition.y));
+    // logger.log(LogLevel::DEBUG, "Player speed updated: Speed = " + std::to_string(this->m_playerSpeed));
 
     // Jump if space is pressed
     if (IsKeyPressed(KEY_SPACE)) {
         this->m_playerSpeed = m_jumpHeight;
         this->audioManager.playAudio("spring-effect");
+        logger.log(LogLevel::INFO, "Player jumped. Current speed: " + std::to_string(this->m_playerSpeed));
     }
 
     // Floor collision
@@ -34,6 +44,7 @@ void Game::update() {
     if (this->m_playerPosition.y + this->m_playerHeight >= floorY) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
+        logger.log(LogLevel::INFO, "Player collided with the floor. Game over.");
         return;
     }
 
@@ -41,12 +52,15 @@ void Game::update() {
     if (this->m_playerPosition.y < 0 || this->m_playerPosition.x > Config::WindowWidth) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
+        logger.log(LogLevel::INFO, "Player hit world boundaries. Game over.");
         return;
     }
 
     // Move pipes
     this->m_pipes[0].x -= this->m_pipeSpeed * GetFrameTime();
     this->m_pipes[1].x -= this->m_pipeSpeed * GetFrameTime();
+
+    // logger.log(LogLevel::DEBUG, "Pipe positions updated: Pipe1 X = " + std::to_string(this->m_pipes[0].x) + ", Pipe2 X = " + std::to_string(this->m_pipes[1].x));
 
     // Reset pipes when off-screen
     if (m_pipes[0].x + this->m_pipeWidth < 0) {
@@ -62,6 +76,8 @@ void Game::update() {
         this->m_pipes[1].y = randomHeight + this->m_pipeGap;
         this->m_pipes[1].height = floorY - this->m_pipes[1].y;
         this->m_pipePassed = false;
+
+        logger.log(LogLevel::INFO, "Pipes reset. New heights: Pipe1 Height = " + std::to_string(this->m_pipes[0].height) + ", Pipe2 Y = " + std::to_string(this->m_pipes[1].y));
     }
 
     // Check if player has passed a pipe
@@ -69,6 +85,8 @@ void Game::update() {
         this->m_score++;
         this->m_pipePassed = true; // Prevents multiple increments for the same pipe
         this->audioManager.playAudio("score");
+
+        logger.log(LogLevel::INFO, "Player passed a pipe. Score updated: " + std::to_string(this->m_score));
     }
 
     // Define player rectangle
@@ -84,19 +102,23 @@ void Game::update() {
         this->audioManager.playAudio("game-over");
         this->m_score = 0;
         this->game_state.activity_state = GameActivityState::GAME_OVER;
+
+        logger.log(LogLevel::INFO, "Collision detected with pipe. Game over.");
     }
 }
 
 void Game::reset_game() {
+    Logger& logger = Logger::getInstance();
+
     this->m_playerSpeed = GlobalVariables::defaultSpeed;
     this->m_playerPosition = GlobalVariables::defaultPosition;
     this->m_pipePassed = false;
     this->m_score = 0;
 
-    // Reset pipes when game over
     this->m_pipes[0] = { Config::WindowWidth, 0, m_pipeWidth, 200 };
-    this->m_pipes[1] =
-        { Config::WindowWidth, 200 + m_pipeGap, m_pipeWidth, Config::WindowHeight - 200 - m_pipeGap };
+    this->m_pipes[1] = { Config::WindowWidth, 200 + m_pipeGap, m_pipeWidth, Config::WindowHeight - 200 - m_pipeGap };
+
+    logger.log(LogLevel::INFO, "Game reset to initial state.");
 }
 
 void Game::draw() {

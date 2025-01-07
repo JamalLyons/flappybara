@@ -9,4 +9,3 @@
 
 #include "constants.hpp"
 #include "Game.hpp"
-#include "Logger.hpp"

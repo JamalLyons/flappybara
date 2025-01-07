@@ -7,6 +7,7 @@
 #include <string>
 #include <unordered_map>
 #include <raylib.h>
+#include "Logger.hpp"
 
 class AudioResourceManager {
 public:

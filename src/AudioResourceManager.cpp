@@ -26,6 +26,9 @@ AudioResourceManager::~AudioResourceManager() {
 }
 
 void AudioResourceManager::loadAudioResources() {
+    Logger& logger = Logger::getInstance();
+    logger.log(LogLevel::INFO, "Loading audio resources.");
+
     constexpr Wave spring_wave{
         .frameCount = SPRING_AUDIO_FRAME_COUNT,
         .sampleRate = SPRING_AUDIO_SAMPLE_RATE,
@@ -62,105 +65,120 @@ void AudioResourceManager::loadAudioResources() {
     audioResources["game-over"] = LoadSoundFromWave(game_over_wave);
     audioResources["level-complete"] = LoadSoundFromWave(level_complete_wave);
     audioResources["score"] = LoadSoundFromWave(score_wave);
+
+    logger.log(LogLevel::INFO, "Audio resources loaded successfully.");
 }
 
 
 void AudioResourceManager::playAudio(const std::string &key) {
+    Logger& logger = Logger::getInstance();
+
     if (Config::disableAudio) {
-        std::cout << "Audio disabled in config." << std::endl;
+        logger.log(LogLevel::WARNING, "Audio disabled in config.");
         return;
     }
 
     if (audioResources.contains(key)) {
         if (const Sound &sound = audioResources[key]; sound.stream.buffer != nullptr) {
-            std::cout << "Playing audio: " << key << std::endl;
+            logger.log(LogLevel::INFO, "Playing audio: " + key);
             PlaySound(sound);
         } else {
-            std::cerr << "Error: Audio '" << key << "' is not valid!" << std::endl;
+            logger.log(LogLevel::ERROR, "Error: Audio '" + key + "' is not valid!");
         }
     } else {
-        std::cerr << "Error: Audio key '" << key << "' not found!" << std::endl;
+        logger.log(LogLevel::ERROR, "Error: Audio key '" + key + "' not found!");
     }
 }
 
 void AudioResourceManager::stopAudio(const std::string &key) {
+    Logger& logger = Logger::getInstance();
+
     if (audioResources.contains(key)) {
         if (const Sound &sound = audioResources[key]; sound.stream.buffer != nullptr) {
-            std::cout << "Stopping audio: " << key << std::endl;
+            logger.log(LogLevel::INFO, "Stopping audio: " + key);
             StopSound(sound);
         } else {
-            std::cerr << "Error: Audio '" << key << "' is not valid!" << std::endl;
+            logger.log(LogLevel::ERROR, "Error: Audio '" + key + "' is not valid!");
         }
     } else {
-        std::cerr << "Error: Audio key '" << key << "' not found!" << std::endl;
+        logger.log(LogLevel::ERROR, "Error: Audio key '" + key + "' not found!");
     }
 }
 
 
 void AudioResourceManager::unloadAudio(const std::string &key) {
+    Logger& logger = Logger::getInstance();
+
     if (audioResources.contains(key)) {
+        logger.log(LogLevel::INFO, "Unloading audio: " + key);
         UnloadSound(audioResources[key]);
         audioResources.erase(key);
     } else {
-        std::cerr << "Error: Audio key '" << key << "' not found!" << std::endl;
+        logger.log(LogLevel::ERROR, "Error: Audio key '" + key + "' not found!");
     }
 }
 
 void AudioResourceManager::unloadAllAudio() {
+    Logger& logger = Logger::getInstance();
+    logger.log(LogLevel::INFO, "Unloading all audio resources.");
+
     for (auto &[key, sound] : audioResources) {
         UnloadSound(sound);
     }
     audioResources.clear();
+
+    logger.log(LogLevel::INFO, "All audio resources unloaded.");
 }
 
 void AudioResourceManager::buildAudioHeaders() {
+    Logger& logger = Logger::getInstance();
+
     if constexpr (!Config::buildAudioHeaders) {
-        std::cout << "Audio headers building disabled." << std::endl;
+        logger.log(LogLevel::INFO, "Audio headers building disabled.");
         return;
     }
 
-    std::cout << "Building audio headers..." << std::endl;
+    logger.log(LogLevel::INFO, "Building audio headers.");
 
     const std::string outputDir = "../resources/audio/headers/";
     if (!std::filesystem::exists(outputDir)) {
         std::filesystem::create_directories(outputDir);
-        std::cout << "Created output directory: " << outputDir << std::endl;
+        logger.log(LogLevel::INFO, "Created output directory: " + outputDir);
     }
 
     for (const auto &[key, path] : predefinedAudioPaths) {
-        // Load the wave file
         const Wave wave = LoadWave(path.c_str());
         if (!wave.data) {
-            std::cerr << "Error: Failed to load wave data: " << path << std::endl;
+            logger.log(LogLevel::ERROR, "Error: Failed to load wave data: " + path);
             continue;
         }
 
-        // Generate a sanitized output header file name
         const std::string filename = path.substr(path.find_last_of("/\\") + 1);
         const std::string sanitizedFilename = filename.substr(0, filename.find_last_of('.')) + "_audio.h";
         const std::string outputPath = outputDir + sanitizedFilename;
 
-        std::cout << "Building header: " << outputPath << std::endl;
+        logger.log(LogLevel::INFO, "Building header: " + outputPath);
 
-        // Export the wave as a C header
         if (!ExportWaveAsCode(wave, outputPath.c_str())) {
-            TraceLog(LOG_ERROR, "Failed to export wave as C header file: %s", outputPath.c_str());
+            logger.log(LogLevel::ERROR, "Failed to export wave as C header file: " + outputPath);
         } else {
-            TraceLog(LOG_INFO, "Wave exported as C header file successfully: %s", outputPath.c_str());
+            logger.log(LogLevel::INFO, "Wave exported as C header file successfully: " + outputPath);
         }
 
-        // Unload the wave to free memory
         UnloadWave(wave);
     }
 
-    std::cout << "Finished building audio headers." << std::endl;
+    logger.log(LogLevel::INFO, "Finished building audio headers.");
 }
 
 void AudioResourceManager::playRawAudio(const std::string &key, const Wave &wave) {
+    Logger& logger = Logger::getInstance();
+
     if (!audioResources.contains(key)) {
-        std::cout << "Caching loaded audio file: " << key << "" << std::endl;
+        logger.log(LogLevel::INFO, "Caching loaded audio file: " + key);
         audioResources[key] = LoadSoundFromWave(wave);
     }
 
+    logger.log(LogLevel::INFO, "Playing raw audio: " + key);
     PlaySound(audioResources[key]);
 }
