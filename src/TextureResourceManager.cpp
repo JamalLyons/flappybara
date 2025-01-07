@@ -9,10 +9,11 @@
 #include "constants.h"
 
 #include "../resources/textures/headers/background_day_texture.h"
-#include "../resources/textures/headers/background_night_texture.h"
+// #include "../resources/textures/headers/background_night_texture.h"
 #include "../resources/textures/headers/base_texture.h"
 #include "../resources/textures/headers/pipe_green_texture.h"
-#include "../resources/textures/headers/pipe_red_texture.h"
+// #include "../resources/textures/headers/pipe_red_texture.h"
+#include "../resources/textures/headers/player_texture.h"
 
 TextureResourceManager::TextureResourceManager() {
     loadTextureResources();
@@ -31,13 +32,13 @@ void TextureResourceManager::loadTextureResources() {
         .format = BACKGROUND_DAY_TEXTURE_FORMAT,
     };
 
-    constexpr Image background_night_img = {
-        .data = BACKGROUND_NIGHT_TEXTURE_DATA,
-        .width = BACKGROUND_NIGHT_TEXTURE_WIDTH,
-        .height = BACKGROUND_NIGHT_TEXTURE_HEIGHT,
-        .mipmaps = 1,
-        .format = BACKGROUND_NIGHT_TEXTURE_FORMAT,
-    };
+    // constexpr Image background_night_img = {
+    //     .data = BACKGROUND_NIGHT_TEXTURE_DATA,
+    //     .width = BACKGROUND_NIGHT_TEXTURE_WIDTH,
+    //     .height = BACKGROUND_NIGHT_TEXTURE_HEIGHT,
+    //     .mipmaps = 1,
+    //     .format = BACKGROUND_NIGHT_TEXTURE_FORMAT,
+    // };
 
     constexpr Image base_img = {
         .data = BASE_TEXTURE_DATA,
@@ -55,19 +56,28 @@ void TextureResourceManager::loadTextureResources() {
         .format = PIPE_GREEN_TEXTURE_FORMAT,
     };
 
-    constexpr Image pipe_red_img = {
-        .data = PIPE_RED_TEXTURE_DATA,
-        .width = PIPE_RED_TEXTURE_WIDTH,
-        .height = PIPE_RED_TEXTURE_HEIGHT,
+    // constexpr Image pipe_red_img = {
+    //     .data = PIPE_RED_TEXTURE_DATA,
+    //     .width = PIPE_RED_TEXTURE_WIDTH,
+    //     .height = PIPE_RED_TEXTURE_HEIGHT,
+    //     .mipmaps = 1,
+    //     .format = PIPE_RED_TEXTURE_FORMAT,
+    // };
+
+    constexpr Image player_img = {
+        .data = PLAYER_TEXTURE_DATA,
+        .width = PLAYER_TEXTURE_WIDTH,
+        .height = PLAYER_TEXTURE_HEIGHT,
         .mipmaps = 1,
-        .format = PIPE_RED_TEXTURE_FORMAT,
+        .format = PLAYER_TEXTURE_FORMAT,
     };
 
     loadTextureFromHeader("background-day", background_day_img);
-    loadTextureFromHeader("background-night", background_night_img);
+    // loadTextureFromHeader("background-night", background_night_img);
     loadTextureFromHeader("floor", base_img);
     loadTextureFromHeader("pipe-green", pipe_green_img);
-    loadTextureFromHeader("pipe-red", pipe_red_img);
+    // loadTextureFromHeader("pipe-red", pipe_red_img);
+    loadTextureFromHeader("player", player_img);
 }
 
 void TextureResourceManager::loadTextureFromHeader(const std::string &key, const Image &image) {

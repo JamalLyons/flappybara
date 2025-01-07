@@ -29,5 +29,6 @@ private:
             {"background-night", "../resources/textures/background_night.png"},
             {"pipe-green", "../resources/textures/pipe_green.png"},
             {"pipe-red", "../resources/textures/pipe_red.png"},
+            {"player", "../resources/textures/player.png"},{}
     };
 };

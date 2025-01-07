@@ -21,30 +21,40 @@ void Game::update() {
         this->audioManager.playAudio("spring-effect");
     }
 
+    // Floor collision
+    const float floorHeight = static_cast<float>(GetScreenHeight()) * 0.1f; // 10% of screen height
+    const float floorY = static_cast<float>(GetScreenHeight()) - floorHeight;
+
+    if (this->game_state.playerPosition.y + 20 > floorY) { // Player radius is 20
+        this->game_state.activity_state = GameActivityState::GAME_OVER;
+        this->audioManager.playAudio("game-over");
+        return;
+    }
+
     // Check if player has hit world boundaries
-    if (this->game_state.playerPosition.y > Config::WindowHeight || this->game_state.playerPosition.y < 0 || this->game_state.playerPosition.x > Config::WindowWidth) {
+    if (this->game_state.playerPosition.y < 0 || this->game_state.playerPosition.x > Config::WindowWidth) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
         return;
     }
 
     // Move pipes
-    this->m_pipes[0].x -= this->m_pipeSpeed  * GetFrameTime();
-    this->m_pipes[1].x -= this->m_pipeSpeed  * GetFrameTime();
+    this->m_pipes[0].x -= this->m_pipeSpeed * GetFrameTime();
+    this->m_pipes[1].x -= this->m_pipeSpeed * GetFrameTime();
 
     // Reset pipes when off-screen
     if (m_pipes[0].x + this->m_pipeWidth < 0) {
         // Seed random for pipe gap positions
         std::random_device rd;
         std::mt19937 mt(rd());
-        std::uniform_real_distribution dist(50.0f, Config::WindowHeight - this->m_pipeGap - 50.0f);
+        std::uniform_real_distribution dist(50.0f, floorY - this->m_pipeGap - 50.0f);
         const auto randomHeight = dist(mt);
 
         this->m_pipes[0].x = Config::WindowWidth;
         this->m_pipes[1].x = Config::WindowWidth;
         this->m_pipes[0].height = randomHeight;
         this->m_pipes[1].y = randomHeight + this->m_pipeGap;
-        this->m_pipes[1].height = Config::WindowHeight - this->m_pipes[1].y;
+        this->m_pipes[1].height = floorY - this->m_pipes[1].y;
         this->game_state.pipePassed = false;
     }
 
@@ -57,15 +67,13 @@ void Game::update() {
 
     // Collision detection
     if (CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[0]) ||
-        CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[1]) ||
-        this->game_state.playerPosition.y > Config::WindowHeight ||
-        this->game_state.playerPosition.y < 0) {
-
+        CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[1])) {
         this->audioManager.playAudio("game-over");
         this->game_state.score = 0;
         this->game_state.activity_state = GameActivityState::GAME_OVER;
     }
 }
+
 
 void Game::reset_game() {
     this->game_state.playerSpeed = GlobalVariables::defaultSpeed;
@@ -81,23 +89,56 @@ void Game::reset_game() {
 
 void Game::draw() {
     const Texture2D background = this->textureManager.getTexture("background-day");
+    const Texture2D pipe = this->textureManager.getTexture("pipe-green");
+    const Texture2D floor = this->textureManager.getTexture("floor");
+    const Texture2D player = this->textureManager.getTexture("player");
 
     // Define the source rectangle (full texture)
-    Rectangle source = { 0.0f, 0.0f, static_cast<float>(background.width), static_cast<float>(background.height) };
+    const Rectangle source = { 0.0f, 0.0f, static_cast<float>(background.width), static_cast<float>(background.height) };
 
     // Define the destination rectangle (screen dimensions)
-    Rectangle dest = { 0.0f, 0.0f, static_cast<float>(GetScreenWidth()), static_cast<float>(GetScreenHeight()) };
+    const Rectangle dest = { 0.0f, 0.0f, static_cast<float>(GetScreenWidth()), static_cast<float>(GetScreenHeight()) };
 
     // Origin point for rotation (not used here, so set to (0,0))
-    Vector2 origin = { 0.0f, 0.0f };
+    constexpr Vector2 origin = { 0.0f, 0.0f };
 
     // Draw the background texture scaled to fit the screen
     DrawTexturePro(background, source, dest, origin, 0.0f, WHITE);
 
-    DrawRectangleRec(m_pipes[0], GREEN);
-    DrawRectangleRec(m_pipes[1], GREEN);
+    // Draw the pipes
+    DrawTexturePro(pipe, source, m_pipes[0], origin, 0.0f, WHITE);
+    DrawTexturePro(pipe, source, m_pipes[1], origin, 0.0f, WHITE);
 
-    DrawCircleV(this->game_state.playerPosition, 20, BLUE);
+    // Adjust the scale factor to fit the height of the floor
+    const float floorScale = static_cast<float>(GetScreenHeight()) * 0.1f / floor.height; // Floor height 10% of screen height
+    const float floorHeight = floor.height * floorScale;
+
+    // Calculate the number of tiles needed to fill the screen width
+    const int tiles = static_cast<int>(std::ceil(static_cast<float>(GetScreenWidth()) / (floor.width * floorScale)));
+
+    // Position at the bottom of the screen
+    const float floorY = static_cast<float>(GetScreenHeight()) - floorHeight;
+
+    // Draw the floor texture tiled across the bottom
+    for (int i = 0; i < tiles; ++i) {
+        const float floorX = i * floor.width * floorScale; // X position for each tile
+        DrawTextureEx(floor, { floorX, floorY }, 0.0f, floorScale, WHITE);
+    }
+
+    // Define the source rectangle for the player (full player texture)
+    const Rectangle playerSource = { 0.0f, 0.0f, static_cast<float>(player.width), static_cast<float>(player.height) };
+
+    // Define the destination rectangle for the player (position and size on the screen)
+    const Rectangle playerDest = {
+        this->game_state.playerPosition.x,
+        this->game_state.playerPosition.y,
+        70.0f, // Width of the player on the screen
+        70.0f  // Height of the player on the screen
+    };
+
+    // Draw the player texture
+    DrawTexturePro(player, playerSource, playerDest, origin, 0.0f, WHITE);
+
 
     DrawText(TextFormat("Player Y: %.2f", this->game_state.playerPosition.y), 10, 30, 20, WHITE);
     DrawText(TextFormat("Player Speed: %.2f", this->game_state.playerSpeed), 10, 50, 20, WHITE);
