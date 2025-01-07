@@ -10,7 +10,7 @@ int main() {
     // SetExitKey(0);
 
     TextureResourceManager textureManager;
-    // textureManager.buildTextureHeaders();
+    textureManager.buildTextureHeaders();
 
     AudioResourceManager audioManager;
     audioManager.buildAudioHeaders();

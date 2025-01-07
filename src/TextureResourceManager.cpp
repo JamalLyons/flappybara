@@ -27,6 +27,7 @@ void TextureResourceManager::loadTextureResources() {
         .data = BACKGROUND_DAY_TEXTURE_DATA,
         .width = BACKGROUND_DAY_TEXTURE_WIDTH,
         .height = BACKGROUND_DAY_TEXTURE_HEIGHT,
+        .mipmaps = 1,
         .format = BACKGROUND_DAY_TEXTURE_FORMAT,
     };
 
@@ -34,6 +35,7 @@ void TextureResourceManager::loadTextureResources() {
         .data = BACKGROUND_NIGHT_TEXTURE_DATA,
         .width = BACKGROUND_NIGHT_TEXTURE_WIDTH,
         .height = BACKGROUND_NIGHT_TEXTURE_HEIGHT,
+        .mipmaps = 1,
         .format = BACKGROUND_NIGHT_TEXTURE_FORMAT,
     };
 
@@ -41,6 +43,7 @@ void TextureResourceManager::loadTextureResources() {
         .data = BASE_TEXTURE_DATA,
         .width = BASE_TEXTURE_WIDTH,
         .height = BASE_TEXTURE_HEIGHT,
+        .mipmaps = 1,
         .format = BASE_TEXTURE_FORMAT,
     };
 
@@ -48,6 +51,7 @@ void TextureResourceManager::loadTextureResources() {
         .data = PIPE_GREEN_TEXTURE_DATA,
         .width = PIPE_GREEN_TEXTURE_WIDTH,
         .height = PIPE_GREEN_TEXTURE_HEIGHT,
+        .mipmaps = 1,
         .format = PIPE_GREEN_TEXTURE_FORMAT,
     };
 
@@ -55,6 +59,7 @@ void TextureResourceManager::loadTextureResources() {
         .data = PIPE_RED_TEXTURE_DATA,
         .width = PIPE_RED_TEXTURE_WIDTH,
         .height = PIPE_RED_TEXTURE_HEIGHT,
+        .mipmaps = 1,
         .format = PIPE_RED_TEXTURE_FORMAT,
     };
 

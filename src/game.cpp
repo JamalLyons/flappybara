@@ -80,7 +80,19 @@ void Game::reset_game() {
 }
 
 void Game::draw() {
-    Texture2D background = this->textureManager.getTexture("background-day");
+    const Texture2D background = this->textureManager.getTexture("background-day");
+
+    // Define the source rectangle (full texture)
+    Rectangle source = { 0.0f, 0.0f, static_cast<float>(background.width), static_cast<float>(background.height) };
+
+    // Define the destination rectangle (screen dimensions)
+    Rectangle dest = { 0.0f, 0.0f, static_cast<float>(GetScreenWidth()), static_cast<float>(GetScreenHeight()) };
+
+    // Origin point for rotation (not used here, so set to (0,0))
+    Vector2 origin = { 0.0f, 0.0f };
+
+    // Draw the background texture scaled to fit the screen
+    DrawTexturePro(background, source, dest, origin, 0.0f, WHITE);
 
     DrawRectangleRec(m_pipes[0], GREEN);
     DrawRectangleRec(m_pipes[1], GREEN);
@@ -92,8 +104,6 @@ void Game::draw() {
     DrawText(TextFormat("Pipe 1 X: %.2f, Height: %.2f", m_pipes[0].x, m_pipes[0].height), 10, 70, 20, WHITE);
     DrawText(TextFormat("Pipe 2 X: %.2f, Y: %.2f, Height: %.2f", m_pipes[1].x, m_pipes[1].y, m_pipes[1].height), 10, 90, 20, WHITE);
     DrawText(TextFormat("Score: %d", this->game_state.score), 10, 10, 20, WHITE);
-
-    DrawTexture(background, 0, 0, WHITE);
 }
 
 void Game::draw_menu() {
