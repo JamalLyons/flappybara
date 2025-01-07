@@ -13,7 +13,7 @@ include_directories(${CMAKE_SOURCE_DIR}/includes)
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_executable(${PROJECT_NAME} WIN32
             src/main.cpp
-            includes/main.h
+            includes/main.hpp
             includes/constants.h
             src/AudioResourceManager.cpp
             includes/AudioResourceManager.h
@@ -21,11 +21,13 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             includes/game.h
             src/TextureResourceManager.cpp
             includes/TextureResourceManager.h
+            src/Logger.cpp
+            includes/Logger.hpp
     )
 else()
     add_executable(${PROJECT_NAME}
             src/main.cpp
-            includes/main.h
+            includes/main.hpp
             includes/constants.h
             src/AudioResourceManager.cpp
             includes/AudioResourceManager.h
@@ -33,6 +35,8 @@ else()
             includes/game.h
             src/TextureResourceManager.cpp
             includes/TextureResourceManager.h
+            src/Logger.cpp
+            includes/Logger.hpp
     )
 endif()
 

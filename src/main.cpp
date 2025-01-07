@@ -2,7 +2,7 @@
 // Created by codingwithjamal on 1/1/2025.
 //
 
-#include "main.h"
+#include "main.hpp"
 
 int main() {
     InitWindow(Config::WindowWidth, Config::WindowHeight, Config::WindowTitle);
@@ -21,9 +21,12 @@ int main() {
 
     Game game(game_state, audioManager, textureManager);
 
-    std::cout << "Default Speed: " << GlobalVariables::defaultSpeed << std::endl;
-    std::cout << "Default Position: " << GlobalVariables::defaultPosition.x << ", " << GlobalVariables::defaultPosition.y << std::endl;
-    std::cout << "Window Width: " << Config::WindowWidth << ", Window Height: " << Config::WindowHeight << std::endl;
+    Logger& logger = Logger::getInstance();
+    logger.setLogFile("../debug.log");
+
+    logger.log(LogLevel::DEBUG, "Default Speed: " + std::to_string(GlobalVariables::defaultSpeed));
+    logger.log(LogLevel::DEBUG, "Default Position: " + std::to_string(GlobalVariables::defaultPosition.x) + ", " + std::to_string(GlobalVariables::defaultPosition.y));
+    logger.log(LogLevel::DEBUG, "Window Width: " + std::to_string(Config::WindowWidth));
 
     while (!WindowShouldClose()) {
         BeginDrawing();
