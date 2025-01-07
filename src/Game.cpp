@@ -2,7 +2,7 @@
 // Created by codingwithjamal on 1/3/2025.
 //
 
-#include "game.h"
+#include "Game.hpp"
 #include <random>
 
 Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager)

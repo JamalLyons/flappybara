@@ -14,13 +14,13 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_executable(${PROJECT_NAME} WIN32
             src/main.cpp
             includes/main.hpp
-            includes/constants.h
+            includes/constants.hpp
             src/AudioResourceManager.cpp
-            includes/AudioResourceManager.h
-            src/game.cpp
-            includes/game.h
+            includes/AudioResourceManager.hpp
+            src/Game.cpp
+            includes/Game.hpp
             src/TextureResourceManager.cpp
-            includes/TextureResourceManager.h
+            includes/TextureResourceManager.hpp
             src/Logger.cpp
             includes/Logger.hpp
     )
@@ -28,13 +28,13 @@ else()
     add_executable(${PROJECT_NAME}
             src/main.cpp
             includes/main.hpp
-            includes/constants.h
+            includes/constants.hpp
             src/AudioResourceManager.cpp
-            includes/AudioResourceManager.h
-            src/game.cpp
-            includes/game.h
+            includes/AudioResourceManager.hpp
+            src/Game.cpp
+            includes/Game.hpp
             src/TextureResourceManager.cpp
-            includes/TextureResourceManager.h
+            includes/TextureResourceManager.hpp
             src/Logger.cpp
             includes/Logger.hpp
     )

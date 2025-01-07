@@ -7,6 +7,6 @@
 #include <iostream>
 #include "raylib.h"
 
-#include "constants.h"
-#include "game.h"
+#include "constants.hpp"
+#include "Game.hpp"
 #include "Logger.hpp"

@@ -17,6 +17,8 @@ namespace Config {
     static constexpr bool buildTextureHeaders = false;
 
     static constexpr bool disableAudio = false;
+
+    static constexpr bool disableFileLogging = false;
     static constexpr bool disableConsoleLogging = false;
 }
 

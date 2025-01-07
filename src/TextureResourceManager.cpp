@@ -3,10 +3,10 @@
 //
 
 #include <filesystem>
-#include "TextureResourceManager.h"
+#include "TextureResourceManager.hpp"
 #include <iostream>
 
-#include "constants.h"
+#include "constants.hpp"
 
 #include "../resources/textures/headers/background_day_texture.h"
 // #include "../resources/textures/headers/background_night_texture.h"

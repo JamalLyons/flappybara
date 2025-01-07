@@ -6,8 +6,8 @@
 #include <iostream>
 #include <filesystem>
 
-#include "AudioResourceManager.h"
-#include "constants.h"
+#include "AudioResourceManager.hpp"
+#include "constants.hpp"
 
 // Audio headers
 #include "../resources/audio/headers/spring_audio.h"

@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include "AudioResourceManager.h"
-#include "TextureResourceManager.h"
-#include "constants.h"
+#include "AudioResourceManager.hpp"
+#include "TextureResourceManager.hpp"
+#include "constants.hpp"
 
 enum class GameActivityState {
     MENU,

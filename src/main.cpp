@@ -22,7 +22,6 @@ int main() {
     Game game(game_state, audioManager, textureManager);
 
     Logger& logger = Logger::getInstance();
-    logger.setLogFile("../debug.log");
 
     logger.log(LogLevel::DEBUG, "Default Speed: " + std::to_string(GlobalVariables::defaultSpeed));
     logger.log(LogLevel::DEBUG, "Default Position: " + std::to_string(GlobalVariables::defaultPosition.x) + ", " + std::to_string(GlobalVariables::defaultPosition.y));

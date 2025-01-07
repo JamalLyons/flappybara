@@ -13,8 +13,11 @@ Logger& Logger::getInstance() {
 }
 
 // Constructor
-Logger::Logger() : consoleLoggingEnabled(true) {
-    setLogFile("log.txt");
+Logger::Logger() {
+    if (Config::disableFileLogging) {
+        return;
+    }
+    setLogFile("../game.log");
 }
 
 // Destructor
