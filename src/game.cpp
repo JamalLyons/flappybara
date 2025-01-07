@@ -80,6 +80,8 @@ void Game::reset_game() {
 }
 
 void Game::draw() {
+    Texture2D background = this->textureManager.getTexture("background-day");
+
     DrawRectangleRec(m_pipes[0], GREEN);
     DrawRectangleRec(m_pipes[1], GREEN);
 
@@ -90,6 +92,8 @@ void Game::draw() {
     DrawText(TextFormat("Pipe 1 X: %.2f, Height: %.2f", m_pipes[0].x, m_pipes[0].height), 10, 70, 20, WHITE);
     DrawText(TextFormat("Pipe 2 X: %.2f, Y: %.2f, Height: %.2f", m_pipes[1].x, m_pipes[1].y, m_pipes[1].height), 10, 90, 20, WHITE);
     DrawText(TextFormat("Score: %d", this->game_state.score), 10, 10, 20, WHITE);
+
+    DrawTexture(background, 0, 0, WHITE);
 }
 
 void Game::draw_menu() {
