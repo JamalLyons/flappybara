@@ -1,0 +1,79 @@
+[2025-01-07 01:33:53] [INFO] Loading texture resources.
+[2025-01-07 01:33:53] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-07 01:33:53] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-07 01:33:53] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-07 01:33:53] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-07 01:33:53] [INFO] Texture resources loaded successfully.
+[2025-01-07 01:33:53] [INFO] Texture headers building disabled.
+[2025-01-07 01:33:53] [INFO] Loading audio resources.
+[2025-01-07 01:33:53] [INFO] Audio resources loaded successfully.
+[2025-01-07 01:33:53] [INFO] Audio headers building disabled.
+[2025-01-07 01:33:53] [INFO] Game initialized with default player position and speed.
+[2025-01-07 01:33:53] [INFO] Starting game...
+[2025-01-07 01:34:04] [INFO] Game reset to initial state.
+[2025-01-07 01:34:04] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:04] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:05] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:05] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:06] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:06] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:07] [INFO] Playing audio: score
+[2025-01-07 01:34:07] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-07 01:34:08] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:08] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:08] [INFO] Pipes reset. New heights: Pipe1 Height = 149.550995, Pipe2 Y = 299.550995
+[2025-01-07 01:34:09] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:09] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:09] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:09] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:10] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:10] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:11] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:11] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:11] [INFO] Playing audio: game-over
+[2025-01-07 01:34:11] [INFO] Collision detected with pipe. Game over.
+[2025-01-07 01:34:13] [INFO] Game reset to initial state.
+[2025-01-07 01:34:14] [INFO] Game reset to initial state.
+[2025-01-07 01:34:14] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:14] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:15] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:15] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:16] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:16] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:17] [INFO] Playing audio: score
+[2025-01-07 01:34:17] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-07 01:34:18] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:18] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:18] [INFO] Pipes reset. New heights: Pipe1 Height = 97.399216, Pipe2 Y = 247.399216
+[2025-01-07 01:34:19] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:19] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:20] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:20] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:21] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:21] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:22] [INFO] Playing audio: score
+[2025-01-07 01:34:22] [INFO] Player passed a pipe. Score updated: 2
+[2025-01-07 01:34:22] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:22] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:22] [INFO] Pipes reset. New heights: Pipe1 Height = 281.650116, Pipe2 Y = 431.650116
+[2025-01-07 01:34:23] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:23] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:25] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:25] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:26] [INFO] Playing audio: score
+[2025-01-07 01:34:26] [INFO] Player passed a pipe. Score updated: 3
+[2025-01-07 01:34:26] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:26] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:27] [INFO] Pipes reset. New heights: Pipe1 Height = 225.448746, Pipe2 Y = 375.448730
+[2025-01-07 01:34:27] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:27] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:29] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:29] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:29] [INFO] Playing audio: spring-effect
+[2025-01-07 01:34:29] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-07 01:34:30] [INFO] Playing audio: game-over
+[2025-01-07 01:34:30] [INFO] Collision detected with pipe. Game over.
+[2025-01-07 01:34:31] [INFO] Game ended.
+[2025-01-07 01:34:31] [INFO] Unloading all audio resources.
+[2025-01-07 01:34:31] [INFO] All audio resources unloaded.
+[2025-01-07 01:34:31] [INFO] Unloaded all textures.
