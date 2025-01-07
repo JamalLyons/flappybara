@@ -6,18 +6,24 @@
 #include <random>
 
 Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager)
-    : game_state(game_state), audioManager(audioManager), textureManager(textureManager) {}
+    : game_state(game_state), audioManager(audioManager), textureManager(textureManager) {
+
+    this->m_playerPosition = GlobalVariables::defaultPosition;
+    this->m_playerSpeed = GlobalVariables::defaultSpeed;
+    this->m_score = 0;
+    this->m_pipePassed = false;
+}
 
 Game::~Game() = default;
 
 void Game::update() {
     // Apply gravity to player
-    this->game_state.playerSpeed += this->m_gravity * GetFrameTime();
-    this->game_state.playerPosition.y += this->game_state.playerSpeed * GetFrameTime();
+    this->m_playerSpeed += this->m_gravity * GetFrameTime();
+    this->m_playerPosition.y += this->m_playerSpeed * GetFrameTime();
 
     // Jump if space is pressed
     if (IsKeyPressed(KEY_SPACE)) {
-        this->game_state.playerSpeed = m_jumpHeight;
+        this->m_playerSpeed = m_jumpHeight;
         this->audioManager.playAudio("spring-effect");
     }
 
@@ -25,14 +31,14 @@ void Game::update() {
     const float floorHeight = static_cast<float>(GetScreenHeight()) * 0.1f; // 10% of screen height
     const float floorY = static_cast<float>(GetScreenHeight()) - floorHeight;
 
-    if (this->game_state.playerPosition.y + 20 > floorY) { // Player radius is 20
+    if (this->m_playerPosition.y + this->m_playerHeight >= floorY) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
         return;
     }
 
     // Check if player has hit world boundaries
-    if (this->game_state.playerPosition.y < 0 || this->game_state.playerPosition.x > Config::WindowWidth) {
+    if (this->m_playerPosition.y < 0 || this->m_playerPosition.x > Config::WindowWidth) {
         this->game_state.activity_state = GameActivityState::GAME_OVER;
         this->audioManager.playAudio("game-over");
         return;
@@ -55,31 +61,37 @@ void Game::update() {
         this->m_pipes[0].height = randomHeight;
         this->m_pipes[1].y = randomHeight + this->m_pipeGap;
         this->m_pipes[1].height = floorY - this->m_pipes[1].y;
-        this->game_state.pipePassed = false;
+        this->m_pipePassed = false;
     }
 
     // Check if player has passed a pipe
-    if (!this->game_state.pipePassed && this->m_pipes[0].x + this->m_pipeWidth < this->game_state.playerPosition.x) {
-        this->game_state.score++;
-        this->game_state.pipePassed = true; // Prevents multiple increments for the same pipe
+    if (!this->m_pipePassed && this->m_pipes[0].x + this->m_pipeWidth < this->m_playerPosition.x) {
+        this->m_score++;
+        this->m_pipePassed = true; // Prevents multiple increments for the same pipe
         this->audioManager.playAudio("score");
     }
 
-    // Collision detection
-    if (CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[0]) ||
-        CheckCollisionCircleRec(this->game_state.playerPosition, 20, this->m_pipes[1])) {
+    // Define player rectangle
+    const Rectangle playerRect = {
+        this->m_playerPosition.x,
+        this->m_playerPosition.y,
+        this->m_playerWidth,
+        this->m_playerHeight
+    };
+
+    // Collision detection using CheckCollisionRecs
+    if (CheckCollisionRecs(playerRect, this->m_pipes[0]) || CheckCollisionRecs(playerRect, this->m_pipes[1])) {
         this->audioManager.playAudio("game-over");
-        this->game_state.score = 0;
+        this->m_score = 0;
         this->game_state.activity_state = GameActivityState::GAME_OVER;
     }
 }
 
-
 void Game::reset_game() {
-    this->game_state.playerSpeed = GlobalVariables::defaultSpeed;
-    this->game_state.playerPosition = GlobalVariables::defaultPosition;
-    this->game_state.pipePassed = false;
-    this->game_state.score = 0;
+    this->m_playerSpeed = GlobalVariables::defaultSpeed;
+    this->m_playerPosition = GlobalVariables::defaultPosition;
+    this->m_pipePassed = false;
+    this->m_score = 0;
 
     // Reset pipes when game over
     this->m_pipes[0] = { Config::WindowWidth, 0, m_pipeWidth, 200 };
@@ -130,8 +142,8 @@ void Game::draw() {
 
     // Define the destination rectangle for the player (position and size on the screen)
     const Rectangle playerDest = {
-        this->game_state.playerPosition.x,
-        this->game_state.playerPosition.y,
+        this->m_playerPosition.x,
+        this->m_playerPosition.y,
         70.0f, // Width of the player on the screen
         70.0f  // Height of the player on the screen
     };
@@ -140,11 +152,11 @@ void Game::draw() {
     DrawTexturePro(player, playerSource, playerDest, origin, 0.0f, WHITE);
 
 
-    DrawText(TextFormat("Player Y: %.2f", this->game_state.playerPosition.y), 10, 30, 20, WHITE);
-    DrawText(TextFormat("Player Speed: %.2f", this->game_state.playerSpeed), 10, 50, 20, WHITE);
+    DrawText(TextFormat("Player Y: %.2f", this->m_playerPosition.y), 10, 30, 20, WHITE);
+    DrawText(TextFormat("Player Speed: %.2f", this->m_playerSpeed), 10, 50, 20, WHITE);
     DrawText(TextFormat("Pipe 1 X: %.2f, Height: %.2f", m_pipes[0].x, m_pipes[0].height), 10, 70, 20, WHITE);
     DrawText(TextFormat("Pipe 2 X: %.2f, Y: %.2f, Height: %.2f", m_pipes[1].x, m_pipes[1].y, m_pipes[1].height), 10, 90, 20, WHITE);
-    DrawText(TextFormat("Score: %d", this->game_state.score), 10, 10, 20, WHITE);
+    DrawText(TextFormat("Score: %d", this->m_score), 10, 10, 20, WHITE);
 }
 
 void Game::draw_menu() {

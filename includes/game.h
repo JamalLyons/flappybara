@@ -19,10 +19,6 @@ enum class GameActivityState {
 
 struct GameState {
     GameActivityState activity_state;   // The current state of the game (playing, paused, etc.)
-    bool pipePassed;                    // If the player has passed a pipe
-    int score;                          // The current score of the player
-    float playerSpeed;                  // The speed of the player in pixels per second
-    Vector2 playerPosition;             // The position of the player in pixels
 };
 
 class Game {
@@ -49,6 +45,13 @@ private:
         { Config::WindowWidth, 0, m_pipeWidth, 200 },
         { Config::WindowWidth, 200 + m_pipeGap, m_pipeWidth, Config::WindowHeight - 200 - m_pipeGap },
     };
+
+    float m_playerWidth = 70.0f;
+    float m_playerHeight = 70.0f;
+    float m_playerSpeed;                  // The speed of the player in pixels per second
+    Vector2 m_playerPosition;             // The position of the player in pixels
+    bool m_pipePassed;                    // If the player has passed a pipe
+    int m_score;                          // The current score of the player
 
     float m_pipeWidth = 80.0f;
     float m_pipeGap = 150.f;
