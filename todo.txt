@@ -1,0 +1,19 @@
+Game:
+
+- Add game menu buttons (Start, Settings, Quit)
+- Add settings menu buttons (Sound, Music, Back, FPS, EXIT)
+- Add game over screen with score and restart button
+- Add game menu music (capybara theme)
+- When player gets to x amount of points change game background to nighttime
+- increase the speed of the game as player gains more points
+- add projectiles to the game the player has to avoid
+- Add game version number in game menu
+
+Release:
+
+- Make download website (github pages)
+- Post release tweet with a short demo video
+
+Future:
+
+- Add game-version.txt to website and fetch this version number at runtime to alert the user of a new version available
