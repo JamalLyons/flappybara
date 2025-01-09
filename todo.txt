@@ -9,6 +9,9 @@ Game:
 - add projectiles to the game the player has to avoid
 - Add game version number in game menu
 
+maybe == we can use msi to make an installer for the game when the user downloads from the website?
+- idk just never used one and kinda wanna know how they work lul
+
 Release:
 
 - Make download website (github pages)
