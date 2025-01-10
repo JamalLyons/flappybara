@@ -187,21 +187,21 @@ void Game::draw() {
 }
 
 void Game::draw_menu() {
-    DrawText("FlappyBara", Config::WindowWidth / 2 - 100, Config::WindowHeight / 4, 40, WHITE);
+    DrawText("FlappyBara", Config::WindowWidth / 2 - 100, Config::WindowHeight / 4 - 100, 40, WHITE);
 
     // Play Button
-    constexpr Rectangle playButton = { static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f - 100.0f, 150.0f, 50.0f };
+    constexpr Rectangle playButton = { static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f - 50.0f, 150.0f, 50.0f };
     if (GuiButton(playButton, "Play")) {
         game_state.activity_state = GameActivityState::PLAYING;
         reset_game(); // Ensure game state is initialized when starting
     }
 
-    constexpr Rectangle settingsButton = { playButton.x, playButton.y + 60.0f, playButton.width, playButton.height };
+    constexpr Rectangle settingsButton = { playButton.x, playButton.y + 80.0f, playButton.width, playButton.height };
     if (GuiButton(settingsButton, "Settings")) {
         game_state.activity_state = GameActivityState::SETTINGS; // Open settings
     }
 
-    constexpr Rectangle exitButton = { playButton.x, playButton.y + 120.0f, playButton.width, playButton.height };
+    constexpr Rectangle exitButton = { playButton.x, playButton.y + 160.0f, playButton.width, playButton.height };
     if (GuiButton(exitButton, "Exit")) {
         game_state.activity_state = GameActivityState::EXIT;
     }
