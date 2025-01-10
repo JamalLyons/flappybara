@@ -43,7 +43,14 @@ public:
     // This function is meant to be run in development only and should not be enabled in release builds.
     void buildAudioHeaders();
 
+    Music getBackgroundMusicRef() const;
+
+    void playBackgroundMusic();
+
 private:
+    // Created in loadAudioResources() method
+    Music background_game_music;
+
     // Audio sound cache
     std::unordered_map<std::string, Sound> audioResources;
     std::unordered_map<std::string, std::string> predefinedAudioPaths = {
@@ -52,5 +59,6 @@ private:
         {"game-over", "../resources/audio/game_over.wav"},
         {"level-complete", "../resources/audio/level_complete.wav"},
         {"score", "../resources/audio/score.wav"},
+        {"theme-song", "../resources/audio/capybara_song.wav"},
     };
 };

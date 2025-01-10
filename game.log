@@ -113,3 +113,312 @@
 [2025-01-10 01:33:03] [INFO] Player jumped. Current speed: -250.000000
 [2025-01-10 01:33:03] [INFO] Playing audio: game-over
 [2025-01-10 01:33:03] [INFO] Player hit world boundaries. Game over.
+[2025-01-10 13:54:59] [INFO] Loading texture resources.
+[2025-01-10 13:54:59] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 13:54:59] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 13:54:59] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 13:54:59] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 13:54:59] [INFO] Texture resources loaded successfully.
+[2025-01-10 13:54:59] [INFO] Texture headers building disabled.
+[2025-01-10 13:54:59] [INFO] Loading audio resources.
+[2025-01-10 13:55:00] [INFO] Audio resources loaded successfully.
+[2025-01-10 13:55:00] [INFO] Building audio headers.
+[2025-01-10 13:55:00] [INFO] Building header: ../resources/audio/headers/score_audio.h
+[2025-01-10 13:55:00] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/score_audio.h
+[2025-01-10 13:55:00] [INFO] Building header: ../resources/audio/headers/level_complete_audio.h
+[2025-01-10 13:55:00] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/level_complete_audio.h
+[2025-01-10 13:55:00] [INFO] Building header: ../resources/audio/headers/game_over_audio.h
+[2025-01-10 13:55:00] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/game_over_audio.h
+[2025-01-10 13:55:00] [INFO] Building header: ../resources/audio/headers/spring_audio.h
+[2025-01-10 13:55:00] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/spring_audio.h
+[2025-01-10 13:55:00] [INFO] Finished building audio headers.
+[2025-01-10 13:55:00] [INFO] Game initialized with default player position and speed.
+[2025-01-10 13:55:00] [INFO] Starting game...
+[2025-01-10 13:56:12] [INFO] Loading texture resources.
+[2025-01-10 13:56:12] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 13:56:12] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 13:56:12] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 13:56:12] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 13:56:12] [INFO] Texture resources loaded successfully.
+[2025-01-10 13:56:12] [INFO] Texture headers building disabled.
+[2025-01-10 13:56:12] [INFO] Loading audio resources.
+[2025-01-10 13:56:12] [INFO] Audio resources loaded successfully.
+[2025-01-10 13:56:12] [INFO] Audio headers building disabled.
+[2025-01-10 13:56:12] [INFO] Game initialized with default player position and speed.
+[2025-01-10 13:56:12] [INFO] Starting game...
+[2025-01-10 13:56:14] [INFO] Game ended.
+[2025-01-10 13:56:14] [INFO] Unloading all audio resources.
+[2025-01-10 13:56:14] [INFO] All audio resources unloaded.
+[2025-01-10 13:56:14] [INFO] Unloaded all textures.
+[2025-01-10 13:57:57] [INFO] Loading texture resources.
+[2025-01-10 13:57:57] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 13:57:57] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 13:57:57] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 13:57:57] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 13:57:57] [INFO] Texture resources loaded successfully.
+[2025-01-10 13:57:57] [INFO] Texture headers building disabled.
+[2025-01-10 13:57:57] [INFO] Loading audio resources.
+[2025-01-10 13:57:57] [INFO] Audio resources loaded successfully.
+[2025-01-10 13:57:57] [INFO] Building audio headers.
+[2025-01-10 13:57:57] [INFO] Building header: ../resources/audio/headers/capybara_song_audio.h
+[2025-01-10 13:57:59] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/capybara_song_audio.h
+[2025-01-10 13:57:59] [INFO] Building header: ../resources/audio/headers/score_audio.h
+[2025-01-10 13:57:59] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/score_audio.h
+[2025-01-10 13:57:59] [INFO] Building header: ../resources/audio/headers/level_complete_audio.h
+[2025-01-10 13:57:59] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/level_complete_audio.h
+[2025-01-10 13:57:59] [INFO] Building header: ../resources/audio/headers/game_over_audio.h
+[2025-01-10 13:57:59] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/game_over_audio.h
+[2025-01-10 13:57:59] [INFO] Building header: ../resources/audio/headers/spring_audio.h
+[2025-01-10 13:57:59] [INFO] Wave exported as C header file successfully: ../resources/audio/headers/spring_audio.h
+[2025-01-10 13:57:59] [INFO] Finished building audio headers.
+[2025-01-10 13:57:59] [INFO] Game initialized with default player position and speed.
+[2025-01-10 13:57:59] [INFO] Starting game...
+[2025-01-10 13:58:21] [INFO] Game ended.
+[2025-01-10 13:58:21] [INFO] Unloading all audio resources.
+[2025-01-10 13:58:21] [INFO] All audio resources unloaded.
+[2025-01-10 13:58:21] [INFO] Unloaded all textures.
+[2025-01-10 14:00:17] [INFO] Loading texture resources.
+[2025-01-10 14:00:17] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:00:17] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:00:17] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:00:17] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:00:17] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:00:17] [INFO] Texture headers building disabled.
+[2025-01-10 14:00:17] [INFO] Loading audio resources.
+[2025-01-10 14:00:17] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:00:17] [INFO] Audio headers building disabled.
+[2025-01-10 14:00:17] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:00:17] [INFO] Starting game...
+[2025-01-10 14:00:58] [INFO] Game ended.
+[2025-01-10 14:00:58] [INFO] Unloading all audio resources.
+[2025-01-10 14:00:58] [INFO] All audio resources unloaded.
+[2025-01-10 14:00:58] [INFO] Unloaded all textures.
+[2025-01-10 14:01:01] [INFO] Loading texture resources.
+[2025-01-10 14:01:01] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:01:01] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:01:01] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:01:01] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:01:01] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:01:01] [INFO] Texture headers building disabled.
+[2025-01-10 14:01:01] [INFO] Loading audio resources.
+[2025-01-10 14:01:01] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:01:01] [INFO] Audio headers building disabled.
+[2025-01-10 14:01:01] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:01:01] [INFO] Starting game...
+[2025-01-10 14:01:05] [INFO] Game reset to initial state.
+[2025-01-10 14:01:05] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:06] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:07] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:08] [INFO] Playing audio: game-over
+[2025-01-10 14:01:08] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:01:10] [INFO] Game reset to initial state.
+[2025-01-10 14:01:11] [INFO] Game reset to initial state.
+[2025-01-10 14:01:11] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:12] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:14] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:15] [INFO] Playing audio: score
+[2025-01-10 14:01:15] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:01:15] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:15] [INFO] Pipes reset. New heights: Pipe1 Height = 204.681534, Pipe2 Y = 354.681519
+[2025-01-10 14:01:16] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:17] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:01:18] [INFO] Playing audio: game-over
+[2025-01-10 14:01:18] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:01:21] [INFO] Game reset to initial state.
+[2025-01-10 14:03:40] [INFO] Game reset to initial state.
+[2025-01-10 14:03:41] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:42] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:43] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:44] [INFO] Playing audio: score
+[2025-01-10 14:03:44] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:03:45] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:45] [INFO] Pipes reset. New heights: Pipe1 Height = 218.252716, Pipe2 Y = 368.252716
+[2025-01-10 14:03:45] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:47] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:47] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:48] [INFO] Playing audio: score
+[2025-01-10 14:03:48] [INFO] Player passed a pipe. Score updated: 2
+[2025-01-10 14:03:49] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:49] [INFO] Pipes reset. New heights: Pipe1 Height = 79.163963, Pipe2 Y = 229.163971
+[2025-01-10 14:03:50] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:50] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:52] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:52] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:53] [INFO] Playing audio: score
+[2025-01-10 14:03:53] [INFO] Player passed a pipe. Score updated: 3
+[2025-01-10 14:03:53] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:54] [INFO] Pipes reset. New heights: Pipe1 Height = 148.726730, Pipe2 Y = 298.726746
+[2025-01-10 14:03:54] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:56] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:03:57] [INFO] Playing audio: game-over
+[2025-01-10 14:03:57] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:04:01] [INFO] Game reset to initial state.
+[2025-01-10 14:04:01] [INFO] Game ended.
+[2025-01-10 14:04:01] [INFO] Unloading all audio resources.
+[2025-01-10 14:04:01] [INFO] All audio resources unloaded.
+[2025-01-10 14:04:01] [INFO] Unloaded all textures.
+[2025-01-10 14:27:32] [INFO] Loading texture resources.
+[2025-01-10 14:27:32] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:27:32] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:27:32] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:27:32] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:27:32] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:27:32] [INFO] Texture headers building disabled.
+[2025-01-10 14:27:32] [INFO] Loading audio resources.
+[2025-01-10 14:27:33] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:27:33] [INFO] Audio headers building disabled.
+[2025-01-10 14:27:33] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:27:33] [INFO] Starting game...
+[2025-01-10 14:27:38] [INFO] Game reset to initial state.
+[2025-01-10 14:27:38] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:39] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:40] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:41] [INFO] Playing audio: score
+[2025-01-10 14:27:41] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:27:42] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:42] [INFO] Pipes reset. New heights: Pipe1 Height = 164.119415, Pipe2 Y = 314.119415
+[2025-01-10 14:27:43] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:44] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:27:45] [INFO] Playing audio: game-over
+[2025-01-10 14:27:45] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:27:46] [INFO] Game reset to initial state.
+[2025-01-10 14:27:47] [INFO] Game ended.
+[2025-01-10 14:27:47] [INFO] Unloading all audio resources.
+[2025-01-10 14:27:47] [INFO] All audio resources unloaded.
+[2025-01-10 14:27:47] [INFO] Unloaded all textures.
+[2025-01-10 14:48:43] [INFO] Loading texture resources.
+[2025-01-10 14:48:43] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:48:43] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:48:43] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:48:43] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:48:43] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:48:43] [INFO] Texture headers building disabled.
+[2025-01-10 14:48:43] [INFO] Loading audio resources.
+[2025-01-10 14:48:43] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:48:43] [INFO] Audio headers building disabled.
+[2025-01-10 14:48:43] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:48:43] [INFO] Starting game...
+[2025-01-10 14:50:08] [INFO] Loading texture resources.
+[2025-01-10 14:50:08] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:50:08] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:50:08] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:50:08] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:50:08] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:50:08] [INFO] Texture headers building disabled.
+[2025-01-10 14:50:09] [INFO] Loading audio resources.
+[2025-01-10 14:50:09] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:50:09] [INFO] Audio headers building disabled.
+[2025-01-10 14:50:09] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:50:09] [INFO] Starting game...
+[2025-01-10 14:51:22] [INFO] Loading texture resources.
+[2025-01-10 14:51:22] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-10 14:51:22] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-10 14:51:22] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-10 14:51:22] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-10 14:51:22] [INFO] Texture resources loaded successfully.
+[2025-01-10 14:51:22] [INFO] Texture headers building disabled.
+[2025-01-10 14:51:22] [INFO] Loading audio resources.
+[2025-01-10 14:51:22] [INFO] Audio resources loaded successfully.
+[2025-01-10 14:51:22] [INFO] Audio headers building disabled.
+[2025-01-10 14:51:22] [INFO] Game initialized with default player position and speed.
+[2025-01-10 14:51:22] [INFO] Starting game...
+[2025-01-10 14:51:25] [INFO] Game reset to initial state.
+[2025-01-10 14:51:25] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:26] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:27] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:28] [INFO] Playing audio: score
+[2025-01-10 14:51:28] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:51:29] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:29] [INFO] Pipes reset. New heights: Pipe1 Height = 82.843338, Pipe2 Y = 232.843338
+[2025-01-10 14:51:30] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:31] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:32] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:33] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:33] [INFO] Playing audio: score
+[2025-01-10 14:51:33] [INFO] Player passed a pipe. Score updated: 2
+[2025-01-10 14:51:34] [INFO] Pipes reset. New heights: Pipe1 Height = 90.598801, Pipe2 Y = 240.598801
+[2025-01-10 14:51:34] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:35] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:36] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:37] [INFO] Playing audio: score
+[2025-01-10 14:51:37] [INFO] Player passed a pipe. Score updated: 3
+[2025-01-10 14:51:38] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:38] [INFO] Pipes reset. New heights: Pipe1 Height = 153.672974, Pipe2 Y = 303.672974
+[2025-01-10 14:51:39] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:40] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:41] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:42] [INFO] Playing audio: game-over
+[2025-01-10 14:51:42] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:51:43] [INFO] Game reset to initial state.
+[2025-01-10 14:51:44] [INFO] Game reset to initial state.
+[2025-01-10 14:51:45] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:46] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:47] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:48] [INFO] Playing audio: score
+[2025-01-10 14:51:48] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:51:48] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:48] [INFO] Pipes reset. New heights: Pipe1 Height = 141.310852, Pipe2 Y = 291.310852
+[2025-01-10 14:51:49] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:50] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:51] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:52] [INFO] Playing audio: score
+[2025-01-10 14:51:52] [INFO] Player passed a pipe. Score updated: 2
+[2025-01-10 14:51:52] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:53] [INFO] Pipes reset. New heights: Pipe1 Height = 143.802658, Pipe2 Y = 293.802673
+[2025-01-10 14:51:53] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:55] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:56] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:56] [INFO] Playing audio: score
+[2025-01-10 14:51:56] [INFO] Player passed a pipe. Score updated: 3
+[2025-01-10 14:51:57] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:51:57] [INFO] Pipes reset. New heights: Pipe1 Height = 132.887711, Pipe2 Y = 282.887695
+[2025-01-10 14:51:58] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:00] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:00] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:01] [INFO] Playing audio: score
+[2025-01-10 14:52:01] [INFO] Player passed a pipe. Score updated: 4
+[2025-01-10 14:52:02] [INFO] Pipes reset. New heights: Pipe1 Height = 134.221466, Pipe2 Y = 284.221466
+[2025-01-10 14:52:02] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:03] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:04] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:05] [INFO] Playing audio: score
+[2025-01-10 14:52:05] [INFO] Player passed a pipe. Score updated: 5
+[2025-01-10 14:52:06] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:06] [INFO] Pipes reset. New heights: Pipe1 Height = 244.293991, Pipe2 Y = 394.294006
+[2025-01-10 14:52:07] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:08] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:09] [INFO] Playing audio: game-over
+[2025-01-10 14:52:09] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:52:10] [INFO] Game reset to initial state.
+[2025-01-10 14:52:12] [INFO] Game reset to initial state.
+[2025-01-10 14:52:13] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:13] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:15] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:16] [INFO] Playing audio: score
+[2025-01-10 14:52:16] [INFO] Player passed a pipe. Score updated: 1
+[2025-01-10 14:52:16] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:17] [INFO] Pipes reset. New heights: Pipe1 Height = 138.436188, Pipe2 Y = 288.436188
+[2025-01-10 14:52:17] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:18] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:19] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:20] [INFO] Playing audio: score
+[2025-01-10 14:52:20] [INFO] Player passed a pipe. Score updated: 2
+[2025-01-10 14:52:21] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:21] [INFO] Pipes reset. New heights: Pipe1 Height = 190.329666, Pipe2 Y = 340.329651
+[2025-01-10 14:52:22] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:23] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:24] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:24] [INFO] Playing audio: game-over
+[2025-01-10 14:52:24] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:52:25] [INFO] Game reset to initial state.
+[2025-01-10 14:52:26] [INFO] Game reset to initial state.
+[2025-01-10 14:52:26] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:26] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:28] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:29] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-10 14:52:29] [INFO] Playing audio: game-over
+[2025-01-10 14:52:29] [INFO] Collision detected with pipe. Game over.
+[2025-01-10 14:52:31] [INFO] Game ended.
+[2025-01-10 14:52:31] [INFO] Unloading all audio resources.
+[2025-01-10 14:52:31] [INFO] All audio resources unloaded.
+[2025-01-10 14:52:31] [INFO] Unloaded all textures.

@@ -14,6 +14,7 @@
 #include "../resources/audio/headers/game_over_audio.h"
 #include "../resources/audio/headers/level_complete_audio.h"
 #include "../resources/audio/headers/score_audio.h"
+#include "../resources/audio/headers/capybara_song_audio.h"
 
 AudioResourceManager::AudioResourceManager() {
     InitAudioDevice();
@@ -21,6 +22,7 @@ AudioResourceManager::AudioResourceManager() {
 }
 
 AudioResourceManager::~AudioResourceManager() {
+    UnloadMusicStream(background_game_music);
     unloadAllAudio();
     CloseAudioDevice();
 }
@@ -65,6 +67,9 @@ void AudioResourceManager::loadAudioResources() {
     audioResources["game-over"] = LoadSoundFromWave(game_over_wave);
     audioResources["level-complete"] = LoadSoundFromWave(level_complete_wave);
     audioResources["score"] = LoadSoundFromWave(score_wave);
+
+    // background_game_music = LoadMusicStreamFromMemory(".wav", CAPYBARA_SONG_AUDIO_DATA, 2763776);
+    background_game_music = LoadMusicStream("../resources/audio/capybara_song.wav");
 
     logger.log(LogLevel::INFO, "Audio resources loaded successfully.");
 }
@@ -122,7 +127,7 @@ void AudioResourceManager::unloadAllAudio() {
     Logger& logger = Logger::getInstance();
     logger.log(LogLevel::INFO, "Unloading all audio resources.");
 
-    for (auto &[key, sound] : audioResources) {
+    for (const auto &[_, sound] : audioResources) {
         UnloadSound(sound);
     }
     audioResources.clear();
@@ -182,3 +187,12 @@ void AudioResourceManager::playRawAudio(const std::string &key, const Wave &wave
     logger.log(LogLevel::INFO, "Playing raw audio: " + key);
     PlaySound(audioResources[key]);
 }
+
+void AudioResourceManager::playBackgroundMusic() {
+    PlayMusicStream(background_game_music);
+}
+
+Music AudioResourceManager::getBackgroundMusicRef() const {
+    return background_game_music;
+}
+

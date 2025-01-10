@@ -24,9 +24,14 @@ int main() {
     Logger& logger = Logger::getInstance();
 
     bool exitTriggered = false;
+
     logger.log(LogLevel::INFO, "Starting game...");
 
+    audioManager.playBackgroundMusic();
+
     while (!WindowShouldClose() && !exitTriggered) {
+        UpdateMusicStream(audioManager.getBackgroundMusicRef());
+
         BeginDrawing();
         ClearBackground(GetColor(0x052c46ff));
 
