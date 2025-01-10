@@ -77,3 +77,24 @@
 [2025-01-07 01:34:31] [INFO] Unloading all audio resources.
 [2025-01-07 01:34:31] [INFO] All audio resources unloaded.
 [2025-01-07 01:34:31] [INFO] Unloaded all textures.
+[2025-01-09 23:45:00] [INFO] Loading texture resources.
+[2025-01-09 23:45:00] [INFO] Loaded texture 'background-day' with ID: 3
+[2025-01-09 23:45:00] [INFO] Loaded texture 'floor' with ID: 4
+[2025-01-09 23:45:00] [INFO] Loaded texture 'pipe-green' with ID: 5
+[2025-01-09 23:45:00] [INFO] Loaded texture 'player' with ID: 6
+[2025-01-09 23:45:00] [INFO] Texture resources loaded successfully.
+[2025-01-09 23:45:00] [INFO] Texture headers building disabled.
+[2025-01-09 23:45:00] [INFO] Loading audio resources.
+[2025-01-09 23:45:00] [INFO] Audio resources loaded successfully.
+[2025-01-09 23:45:00] [INFO] Audio headers building disabled.
+[2025-01-09 23:45:00] [INFO] Game initialized with default player position and speed.
+[2025-01-09 23:45:00] [INFO] Starting game...
+[2025-01-09 23:45:01] [INFO] Game reset to initial state.
+[2025-01-09 23:45:01] [INFO] Playing audio: spring-effect
+[2025-01-09 23:45:01] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-09 23:45:02] [INFO] Playing audio: spring-effect
+[2025-01-09 23:45:02] [INFO] Player jumped. Current speed: -250.000000
+[2025-01-09 23:45:03] [INFO] Game ended.
+[2025-01-09 23:45:03] [INFO] Unloading all audio resources.
+[2025-01-09 23:45:03] [INFO] All audio resources unloaded.
+[2025-01-09 23:45:03] [INFO] Unloaded all textures.
