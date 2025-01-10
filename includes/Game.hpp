@@ -52,6 +52,7 @@ private:
     Vector2 m_playerPosition;             // The position of the player in pixels
     bool m_pipePassed;                    // If the player has passed a pipe
     int m_score;                          // The current score of the player
+    int m_gameOverScore;                  // The score at which the game is over
 
     float m_pipeWidth = 80.0f;
     float m_pipeGap = 150.f;
