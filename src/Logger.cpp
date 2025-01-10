@@ -35,7 +35,7 @@ void Logger::setLogFile(const std::string& filename) {
     }
     logFile.open(filename, std::ios::out | std::ios::app);
     if (!logFile) {
-        std::cerr << "Failed to open log file: " << filename << std::endl;
+        std::cerr << "Failed to open log file: " << filename << "\n";
     }
 }
 
@@ -49,12 +49,12 @@ void Logger::log(LogLevel level, const std::string& message) {
 
     // Optionally write to console
     if (consoleLoggingEnabled) {
-        std::cout << logEntry << std::endl;
+        std::cout << logEntry << "\n";
     }
 
     // Write to log file
     if (logFile.is_open()) {
-        logFile << logEntry << std::endl;
+        logFile << logEntry << "\n";
     }
 }
 
