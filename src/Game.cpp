@@ -190,23 +190,37 @@ void Game::draw_menu() {
     DrawText("FlappyBara", Config::WindowWidth / 2 - 100, Config::WindowHeight / 4, 40, WHITE);
 
     // Play Button
-    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f - 50.0f, 150.0f, 50.0f }, "Play")) {
+    constexpr Rectangle playButton = { static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f - 100.0f, 150.0f, 50.0f };
+    if (GuiButton(playButton, "Play")) {
         game_state.activity_state = GameActivityState::PLAYING;
         reset_game(); // Ensure game state is initialized when starting
     }
 
-    // Settings Button
-    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f + 20.0f, 150.0f, 50.0f }, "Settings")) {
+    constexpr Rectangle settingsButton = { playButton.x, playButton.y + 60.0f, playButton.width, playButton.height };
+    if (GuiButton(settingsButton, "Settings")) {
         game_state.activity_state = GameActivityState::SETTINGS; // Open settings
     }
 
-    // Exit Button
-    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f + 90.0f, 150.0f, 50.0f }, "Exit")) {
+    constexpr Rectangle exitButton = { playButton.x, playButton.y + 120.0f, playButton.width, playButton.height };
+    if (GuiButton(exitButton, "Exit")) {
         game_state.activity_state = GameActivityState::EXIT;
     }
 }
 
 void Game::draw_game_over() {
-    DrawText(TextFormat("Your Score: %d", m_gameOverScore), Config::WindowWidth / 2 - 50, Config::WindowHeight / 2 - 20, 25, WHITE);
-    DrawText("Game Over - Press ENTER to Restart", Config::WindowWidth / 2 - 150, Config::WindowHeight / 2 + 10, 20, WHITE);
+    // Game Over Text
+    DrawText("Game Over", Config::WindowWidth / 2 - 100, Config::WindowHeight / 2 - 60, 40, WHITE);
+
+    // The player's Score
+    DrawText(TextFormat("Your Score: %d", m_gameOverScore), Config::WindowWidth / 2 - 100, Config::WindowHeight / 2, 25, WHITE);
+
+    // Back to Menu Button
+    constexpr float buttonWidth = 150.0f;
+    constexpr float buttonHeight = 50.0f;
+    const Rectangle menuButton = { static_cast<float>(Config::WindowWidth) / 2.0f - buttonWidth / 2.0f, static_cast<float>(Config::WindowHeight) / 2.0f + 60.0f, buttonWidth, buttonHeight };
+
+    if (GuiButton(menuButton, "Back")) {
+        reset_game();
+        game_state.activity_state = GameActivityState::MENU;
+    }
 }

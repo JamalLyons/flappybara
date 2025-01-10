@@ -42,10 +42,6 @@ int main() {
 
             case GameActivityState::GAME_OVER:
                 game.draw_game_over();
-                if (IsKeyPressed(KEY_ENTER)) {
-                    game_state.activity_state = GameActivityState::MENU;
-                    game.reset_game();
-                }
             break;
 
             case GameActivityState::SETTINGS:
