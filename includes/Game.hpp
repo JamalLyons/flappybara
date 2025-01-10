@@ -14,7 +14,8 @@ enum class GameActivityState {
     PAUSED,
     LOADING,
     SETTINGS,
-    GAME_OVER
+    GAME_OVER,
+    EXIT
 };
 
 struct GameState {

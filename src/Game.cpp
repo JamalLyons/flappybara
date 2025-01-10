@@ -5,6 +5,9 @@
 #include "Game.hpp"
 #include <random>
 
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+
 Game::Game(GameState &game_state, AudioResourceManager &audioManager, TextureResourceManager &textureManager)
     : game_state(game_state), audioManager(audioManager), textureManager(textureManager) {
 
@@ -184,7 +187,23 @@ void Game::draw() {
 }
 
 void Game::draw_menu() {
-    DrawText("Start Menu - Press ENTER to Play", Config::WindowWidth / 2 - 200, Config::WindowHeight / 2, 20, WHITE);
+    DrawText("FlappyBara", Config::WindowWidth / 2 - 100, Config::WindowHeight / 4, 40, WHITE);
+
+    // Play Button
+    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f - 50.0f, 150.0f, 50.0f }, "Play")) {
+        game_state.activity_state = GameActivityState::PLAYING;
+        reset_game(); // Ensure game state is initialized when starting
+    }
+
+    // Settings Button
+    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f + 20.0f, 150.0f, 50.0f }, "Settings")) {
+        game_state.activity_state = GameActivityState::SETTINGS; // Open settings
+    }
+
+    // Exit Button
+    if (GuiButton({ static_cast<float>(Config::WindowWidth) / 2.0f - 75.0f, static_cast<float>(Config::WindowHeight) / 2.0f + 90.0f, 150.0f, 50.0f }, "Exit")) {
+        game_state.activity_state = GameActivityState::EXIT;
+    }
 }
 
 void Game::draw_game_over() {

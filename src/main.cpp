@@ -23,19 +23,16 @@ int main() {
 
     Logger& logger = Logger::getInstance();
 
+    bool exitTriggered = false;
     logger.log(LogLevel::INFO, "Starting game...");
 
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose() && !exitTriggered) {
         BeginDrawing();
         ClearBackground(GetColor(0x052c46ff));
 
         switch (game_state.activity_state) {
             case GameActivityState::MENU:
                 game.draw_menu();
-                if (IsKeyPressed(KEY_ENTER)) {
-                    game_state.activity_state = GameActivityState::PLAYING;
-                    game.reset_game(); // Ensure game state is initialized when starting
-                }
             break;
 
             case GameActivityState::PLAYING:
@@ -49,6 +46,22 @@ int main() {
                     game_state.activity_state = GameActivityState::MENU;
                     game.reset_game();
                 }
+            break;
+
+            case GameActivityState::SETTINGS:
+                // todo
+            break;
+
+            case GameActivityState::PAUSED:
+                // todo
+            break;
+
+            case GameActivityState::LOADING:
+                // todo
+            break;
+
+            case GameActivityState::EXIT:
+                exitTriggered = true;
             break;
 
             default:

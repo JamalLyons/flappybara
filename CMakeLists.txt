@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Make sure Cmake knows where to look for includes in our project
-include_directories(${CMAKE_SOURCE_DIR}/includes)
+include_directories(${CMAKE_SOURCE_DIR}/includes ${CMAKE_SOURCE_DIR}/vendor)
 
 # Remove console for Release builds
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
