@@ -68,8 +68,8 @@ void AudioResourceManager::loadAudioResources() {
     audioResources["level-complete"] = LoadSoundFromWave(level_complete_wave);
     audioResources["score"] = LoadSoundFromWave(score_wave);
 
-    // background_game_music = LoadMusicStreamFromMemory(".wav", CAPYBARA_SONG_AUDIO_DATA, 2763776);
-    background_game_music = LoadMusicStream("../resources/audio/capybara_song.wav");
+    background_game_music = LoadMusicStreamFromMemory(".wav", CAPYBARA_SONG_AUDIO_DATA, CAPYBARA_SONG_AUDIO_FRAME_COUNT);
+    // background_game_music = LoadMusicStream("../resources/audio/capybara_song.wav");
 
     logger.log(LogLevel::INFO, "Audio resources loaded successfully.");
 }
